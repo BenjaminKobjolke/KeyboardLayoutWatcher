@@ -2,6 +2,8 @@
 
 A Windows application that monitors and displays the current keyboard layout. Shows an alert when the keyboard layout changes.
 
+![Screenshot](media/screenshot_01.jpg)
+
 ## Features
 
 - Detects keyboard layout changes in real-time
