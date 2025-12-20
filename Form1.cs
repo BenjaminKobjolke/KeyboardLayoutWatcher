@@ -445,8 +445,12 @@ namespace KeyboardLayoutWatcher
             }
         }
 
+        private const bool DEBUG_LOGGING = false; // Set to true to enable debug logging
+
         private void Log(string message)
         {
+            if (!DEBUG_LOGGING) return;
+
             string logPath = System.IO.Path.Combine(Application.StartupPath, "debug.log");
             string line = $"[{DateTime.Now:HH:mm:ss.fff}] {message}";
             System.IO.File.AppendAllText(logPath, line + Environment.NewLine);
