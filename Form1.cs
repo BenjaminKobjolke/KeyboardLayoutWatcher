@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -9,7 +9,7 @@ namespace KeyboardLayoutWatcher
 {
     public partial class Form1 : Form
     {
-        // P/Invoke declarations
+        // P/Invoke declarations for keyboard layout detection
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
 
@@ -18,7 +18,6 @@ namespace KeyboardLayoutWatcher
 
         [DllImport("user32.dll")]
         private static extern IntPtr GetKeyboardLayout(uint idThread);
-
 
         // Windows message constants
         private const int WM_INPUTLANGCHANGE = 0x0051;
@@ -64,30 +63,131 @@ namespace KeyboardLayoutWatcher
         private bool _initialLayoutSet = false;
         private Form _currentAlert = null;
 
+        // New components
+        private KeyboardHook _keyboardHook;
+        private TrayManager _trayManager;
+        private CheckBox _chkBlockWinSpace;
+        private CheckBox _chkShowAlert;
+        private CheckBox _chkMinimizeOnStart;
+        private CheckBox _chkMinimizeToTray;
+        private ToolTip _statusToolTip;
+        private Timer _tooltipTimer;
+        private bool _isLoading = true;
+        private bool _isRestoring = false;
+
         public Form1()
         {
             InitializeComponent();
+            InitializeUI();
+            InitializeComponents();
+            LoadSettings();
+            ApplyStartupBehavior();
+        }
 
-            // Optional: make the window small & unobtrusive
+        private void InitializeUI()
+        {
             this.Text = "Keyboard Layout Watcher";
             this.Width = 400;
-            this.Height = 80;
-            this.BackColor = Color.FromArgb(30, 30, 30);
+            this.Height = 220;
 
-            // Create a label to show the current layout
+            // Load application icon
+            string iconPath = System.IO.Path.Combine(Application.StartupPath, "data", "icon.ico");
+            if (System.IO.File.Exists(iconPath))
+            {
+                this.Icon = new Icon(iconPath);
+            }
+            this.BackColor = Color.FromArgb(30, 30, 30);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
+            // Layout display label
             _layoutLabel = new Label
             {
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
+                Location = new Point(15, 10),
+                Size = new Size(370, 30),
+                TextAlign = ContentAlignment.MiddleLeft,
                 Font = new Font("Segoe UI", 12),
                 ForeColor = Color.White,
                 BackColor = Color.FromArgb(30, 30, 30)
             };
             this.Controls.Add(_layoutLabel);
 
-            // Timer to poll the current layout of the foreground window (fallback)
-            _timer = new Timer();
-            _timer.Interval = 200; // ms, adjust as you like
+            // Separator
+            var separator = new Label
+            {
+                Location = new Point(10, 45),
+                Size = new Size(370, 1),
+                BackColor = Color.FromArgb(60, 60, 60)
+            };
+            this.Controls.Add(separator);
+
+            // Checkboxes
+            int yPos = 55;
+            int spacing = 28;
+
+            _chkBlockWinSpace = CreateCheckBox("Block Win+Space (triple-press to switch)", yPos);
+            yPos += spacing;
+
+            _chkShowAlert = CreateCheckBox("Show alert on layout change", yPos);
+            yPos += spacing;
+
+            _chkMinimizeOnStart = CreateCheckBox("Minimize on start", yPos);
+            yPos += spacing;
+
+            _chkMinimizeToTray = CreateCheckBox("Minimize to tray", yPos);
+
+            // Status tooltip
+            _statusToolTip = new ToolTip
+            {
+                AutoPopDelay = 1000,
+                InitialDelay = 0,
+                ReshowDelay = 0,
+                ShowAlways = true
+            };
+
+            _tooltipTimer = new Timer { Interval = 1000 };
+            _tooltipTimer.Tick += (s, e) =>
+            {
+                _statusToolTip.Hide(this);
+                _tooltipTimer.Stop();
+            };
+        }
+
+        private CheckBox CreateCheckBox(string text, int yPos)
+        {
+            var checkBox = new CheckBox
+            {
+                Text = text,
+                Location = new Point(15, yPos),
+                Size = new Size(360, 24),
+                Font = new Font("Segoe UI", 10),
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30),
+                FlatStyle = FlatStyle.Flat
+            };
+            checkBox.CheckedChanged += CheckBox_CheckedChanged;
+            this.Controls.Add(checkBox);
+            return checkBox;
+        }
+
+        private void InitializeComponents()
+        {
+            // Initialize keyboard hook
+            _keyboardHook = new KeyboardHook();
+            _keyboardHook.StatusChanged += KeyboardHook_StatusChanged;
+            _keyboardHook.Install();
+
+            // Initialize tray manager
+            _trayManager = new TrayManager(this.Icon);
+            _trayManager.ShowRequested += (s, e) =>
+            {
+                Log("ShowRequested event fired");
+                RestoreFromTray();
+            };
+            _trayManager.ExitRequested += (s, e) => Application.Exit();
+
+            // Timer for layout polling
+            _timer = new Timer { Interval = 200 };
             _timer.Tick += (s, e) =>
             {
                 IntPtr foreground = GetForegroundWindow();
@@ -95,11 +195,70 @@ namespace KeyboardLayoutWatcher
 
                 uint threadId = GetWindowThreadProcessId(foreground, IntPtr.Zero);
                 IntPtr layout = GetKeyboardLayout(threadId);
-
                 UpdateLayoutDisplay(layout);
             };
-
             _timer.Start();
+        }
+
+        private void LoadSettings()
+        {
+            _isLoading = true;
+            var settings = AppSettings.Instance;
+            _chkBlockWinSpace.Checked = settings.BlockWinSpace;
+            _chkShowAlert.Checked = settings.ShowAlertOnLayoutChange;
+            _chkMinimizeOnStart.Checked = settings.MinimizeOnStart;
+            _chkMinimizeToTray.Checked = settings.MinimizeToTray;
+
+            _keyboardHook.IsEnabled = settings.BlockWinSpace;
+            _isLoading = false;
+        }
+
+        private void ApplyStartupBehavior()
+        {
+            if (AppSettings.Instance.MinimizeOnStart)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                if (AppSettings.Instance.MinimizeToTray)
+                {
+                    this.ShowInTaskbar = false;
+                    this.Hide();
+                }
+            }
+        }
+
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_isLoading) return;
+
+            var settings = AppSettings.Instance;
+            settings.BlockWinSpace = _chkBlockWinSpace.Checked;
+            settings.ShowAlertOnLayoutChange = _chkShowAlert.Checked;
+            settings.MinimizeOnStart = _chkMinimizeOnStart.Checked;
+            settings.MinimizeToTray = _chkMinimizeToTray.Checked;
+            settings.Save();
+
+            _keyboardHook.IsEnabled = settings.BlockWinSpace;
+        }
+
+        private void KeyboardHook_StatusChanged(object sender, string status)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new Action(() => ShowStatusTooltip(status)));
+            }
+            else
+            {
+                ShowStatusTooltip(status);
+            }
+        }
+
+        private void ShowStatusTooltip(string status)
+        {
+            _tooltipTimer.Stop();
+            var screen = Screen.FromControl(this);
+            var cursorPos = Cursor.Position;
+            _statusToolTip.Show(status, this, this.PointToClient(cursorPos), 1000);
+            _tooltipTimer.Start();
         }
 
         private void UpdateLayoutDisplay(IntPtr layout)
@@ -109,13 +268,8 @@ namespace KeyboardLayoutWatcher
 
             _lastLayout = layout;
 
-            // Extract LANGID from HKL (low word) for language info
             int langId = (ushort)layout.ToInt64();
-
-            // Extract keyboard layout ID from HKL (high word)
             int keyboardId = (ushort)(layout.ToInt64() >> 16);
-
-            // Build KLID from high word for dictionary lookup
             string klid = keyboardId.ToString("X4").PadLeft(8, '0');
 
             CultureInfo culture = null;
@@ -123,12 +277,8 @@ namespace KeyboardLayoutWatcher
             {
                 culture = new CultureInfo(langId);
             }
-            catch
-            {
-                // Fallback if something weird happens
-            }
+            catch { }
 
-            // Try to get friendly keyboard layout name from high word
             string keyboardLayoutName;
             if (KeyboardLayoutNames.TryGetValue(klid, out string friendlyName))
             {
@@ -136,7 +286,6 @@ namespace KeyboardLayoutWatcher
             }
             else
             {
-                // Fallback: show the raw KLID
                 keyboardLayoutName = klid;
             }
 
@@ -152,9 +301,9 @@ namespace KeyboardLayoutWatcher
 
             _layoutLabel.Text = text;
             this.Text = text;
+            _trayManager?.UpdateTooltip(text);
 
-            // Show alert popup (skip on initial detection)
-            if (_initialLayoutSet)
+            if (_initialLayoutSet && AppSettings.Instance.ShowAlertOnLayoutChange)
             {
                 ShowLayoutAlert(keyboardLayoutName);
             }
@@ -163,7 +312,6 @@ namespace KeyboardLayoutWatcher
 
         private void ShowLayoutAlert(string layoutName)
         {
-            // Close any existing alert
             if (_currentAlert != null && !_currentAlert.IsDisposed)
             {
                 _currentAlert.Close();
@@ -223,7 +371,6 @@ namespace KeyboardLayoutWatcher
         {
             if (m.Msg == WM_INPUTLANGCHANGE)
             {
-                // lParam contains the new input locale identifier (HKL)
                 IntPtr newLayout = m.LParam;
                 UpdateLayoutDisplay(newLayout);
             }
@@ -231,10 +378,89 @@ namespace KeyboardLayoutWatcher
             base.WndProc(ref m);
         }
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+
+            if (!_isRestoring && this.WindowState == FormWindowState.Minimized && AppSettings.Instance.MinimizeToTray)
+            {
+                this.ShowInTaskbar = false;
+                this.Hide();
+            }
+        }
+
+        private void RestoreFromTray()
+        {
+            Log("RestoreFromTray called");
+            Log($"  IsHandleCreated: {this.IsHandleCreated}");
+            Log($"  InvokeRequired: {this.InvokeRequired}");
+            Log($"  Thread: {System.Threading.Thread.CurrentThread.ManagedThreadId}");
+
+            try
+            {
+                if (this.InvokeRequired)
+                {
+                    Log("  InvokeRequired=true, using BeginInvoke");
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        Log("  Inside BeginInvoke callback");
+                        DoRestoreFromTray();
+                    }));
+                    return;
+                }
+
+                DoRestoreFromTray();
+            }
+            catch (Exception ex)
+            {
+                Log($"RestoreFromTray error: {ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        private void DoRestoreFromTray()
+        {
+            Log("DoRestoreFromTray called");
+            _isRestoring = true;
+            try
+            {
+                Log("  Setting WindowState=Normal");
+                this.WindowState = FormWindowState.Normal;
+                Log("  Setting ShowInTaskbar=true");
+                this.ShowInTaskbar = true;
+                Log("  Setting Visible=true");
+                this.Visible = true;
+                Log("  Calling Activate");
+                this.Activate();
+                Log("  Calling BringToFront");
+                this.BringToFront();
+                Log("DoRestoreFromTray complete");
+            }
+            catch (Exception ex)
+            {
+                Log($"DoRestoreFromTray error: {ex.Message}\n{ex.StackTrace}");
+            }
+            finally
+            {
+                _isRestoring = false;
+            }
+        }
+
+        private void Log(string message)
+        {
+            string logPath = System.IO.Path.Combine(Application.StartupPath, "debug.log");
+            string line = $"[{DateTime.Now:HH:mm:ss.fff}] {message}";
+            System.IO.File.AppendAllText(logPath, line + Environment.NewLine);
+            System.Diagnostics.Debug.WriteLine(line);
+        }
+
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             _timer?.Stop();
             _timer?.Dispose();
+            _keyboardHook?.Dispose();
+            _trayManager?.Dispose();
+            _tooltipTimer?.Stop();
+            _tooltipTimer?.Dispose();
             base.OnFormClosed(e);
         }
     }
