@@ -90,12 +90,8 @@ namespace KeyboardLayoutWatcher
             this.Width = 400;
             this.Height = 220;
 
-            // Load application icon
-            string iconPath = System.IO.Path.Combine(Application.StartupPath, "data", "icon.ico");
-            if (System.IO.File.Exists(iconPath))
-            {
-                this.Icon = new Icon(iconPath);
-            }
+            // Load application icon from embedded resource
+            this.Icon = Properties.Resources.icon;
             this.BackColor = Color.FromArgb(30, 30, 30);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
