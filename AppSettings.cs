@@ -18,6 +18,7 @@ namespace KeyboardLayoutWatcher
         public bool MinimizeOnStart { get; set; }
         public bool MinimizeToTray { get; set; }
         public bool BlockWinSpace { get; set; }
+        public bool LaunchOnStartup { get; set; }
 
         public void Load()
         {
@@ -25,6 +26,7 @@ namespace KeyboardLayoutWatcher
             MinimizeOnStart = Properties.Settings.Default.MinimizeOnStart;
             MinimizeToTray = Properties.Settings.Default.MinimizeToTray;
             BlockWinSpace = Properties.Settings.Default.BlockWinSpace;
+            LaunchOnStartup = Properties.Settings.Default.LaunchOnStartup;
         }
 
         public void Save()
@@ -33,6 +35,7 @@ namespace KeyboardLayoutWatcher
             Properties.Settings.Default.MinimizeOnStart = MinimizeOnStart;
             Properties.Settings.Default.MinimizeToTray = MinimizeToTray;
             Properties.Settings.Default.BlockWinSpace = BlockWinSpace;
+            Properties.Settings.Default.LaunchOnStartup = LaunchOnStartup;
             Properties.Settings.Default.Save();
 
             SettingsChanged?.Invoke(this, EventArgs.Empty);

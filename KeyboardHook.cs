@@ -131,7 +131,6 @@ namespace KeyboardLayoutWatcher
             }
             else
             {
-                StatusChanged?.Invoke(this, $"no! ({_pressCount})");
                 // Block the keypress by returning non-zero
                 return (IntPtr)1;
             }

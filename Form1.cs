@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace KeyboardLayoutWatcher
 {
@@ -70,6 +71,7 @@ namespace KeyboardLayoutWatcher
         private CheckBox _chkShowAlert;
         private CheckBox _chkMinimizeOnStart;
         private CheckBox _chkMinimizeToTray;
+        private CheckBox _chkLaunchOnStartup;
         private ToolTip _statusToolTip;
         private Timer _tooltipTimer;
         private bool _isLoading = true;
@@ -88,7 +90,7 @@ namespace KeyboardLayoutWatcher
         {
             this.Text = "Keyboard Layout Watcher";
             this.Width = 400;
-            this.Height = 220;
+            this.Height = 248;
 
             // Load application icon from embedded resource
             this.Icon = Properties.Resources.icon;
@@ -131,6 +133,9 @@ namespace KeyboardLayoutWatcher
             yPos += spacing;
 
             _chkMinimizeToTray = CreateCheckBox("Minimize to tray", yPos);
+            yPos += spacing;
+
+            _chkLaunchOnStartup = CreateCheckBox("Launch on Windows startup", yPos);
 
             // Status tooltip
             _statusToolTip = new ToolTip
@@ -204,6 +209,7 @@ namespace KeyboardLayoutWatcher
             _chkShowAlert.Checked = settings.ShowAlertOnLayoutChange;
             _chkMinimizeOnStart.Checked = settings.MinimizeOnStart;
             _chkMinimizeToTray.Checked = settings.MinimizeToTray;
+            _chkLaunchOnStartup.Checked = IsStartupEnabled();
 
             _keyboardHook.IsEnabled = settings.BlockWinSpace;
             _isLoading = false;
@@ -222,6 +228,34 @@ namespace KeyboardLayoutWatcher
             }
         }
 
+        private const string StartupRegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Run";
+        private const string StartupValueName = "KeyboardLayoutWatcher";
+
+        private bool IsStartupEnabled()
+        {
+            using (var key = Registry.CurrentUser.OpenSubKey(StartupRegistryKey, false))
+            {
+                return key?.GetValue(StartupValueName) != null;
+            }
+        }
+
+        private void SetStartupEnabled(bool enable)
+        {
+            using (var key = Registry.CurrentUser.OpenSubKey(StartupRegistryKey, true))
+            {
+                if (key == null) return;
+
+                if (enable)
+                {
+                    key.SetValue(StartupValueName, Application.ExecutablePath);
+                }
+                else
+                {
+                    key.DeleteValue(StartupValueName, false);
+                }
+            }
+        }
+
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (_isLoading) return;
@@ -231,9 +265,11 @@ namespace KeyboardLayoutWatcher
             settings.ShowAlertOnLayoutChange = _chkShowAlert.Checked;
             settings.MinimizeOnStart = _chkMinimizeOnStart.Checked;
             settings.MinimizeToTray = _chkMinimizeToTray.Checked;
+            settings.LaunchOnStartup = _chkLaunchOnStartup.Checked;
             settings.Save();
 
             _keyboardHook.IsEnabled = settings.BlockWinSpace;
+            SetStartupEnabled(_chkLaunchOnStartup.Checked);
         }
 
         private void KeyboardHook_StatusChanged(object sender, string status)
