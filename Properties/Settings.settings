@@ -11,8 +11,11 @@
     <Setting Name="MinimizeToTray" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="BlockWinSpace" Type="System.Boolean" Scope="User">
+    <Setting Name="WinSpaceBlockCompletely" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WinSpacePressCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="LaunchOnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

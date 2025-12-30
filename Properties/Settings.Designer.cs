@@ -72,15 +72,30 @@ namespace KeyboardLayoutWatcher.Properties
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool BlockWinSpace
+        public bool WinSpaceBlockCompletely
         {
             get
             {
-                return ((bool)(this["BlockWinSpace"]));
+                return ((bool)(this["WinSpaceBlockCompletely"]));
             }
             set
             {
-                this["BlockWinSpace"] = value;
+                this["WinSpaceBlockCompletely"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int WinSpacePressCount
+        {
+            get
+            {
+                return ((int)(this["WinSpacePressCount"]));
+            }
+            set
+            {
+                this["WinSpacePressCount"] = value;
             }
         }
 

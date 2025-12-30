@@ -17,7 +17,8 @@ namespace KeyboardLayoutWatcher
         public bool ShowAlertOnLayoutChange { get; set; }
         public bool MinimizeOnStart { get; set; }
         public bool MinimizeToTray { get; set; }
-        public bool BlockWinSpace { get; set; }
+        public bool WinSpaceBlockCompletely { get; set; }  // true = block completely, false = multi-press
+        public int WinSpacePressCount { get; set; }        // 2-5
         public bool LaunchOnStartup { get; set; }
 
         public void Load()
@@ -25,7 +26,8 @@ namespace KeyboardLayoutWatcher
             ShowAlertOnLayoutChange = Properties.Settings.Default.ShowAlertOnLayoutChange;
             MinimizeOnStart = Properties.Settings.Default.MinimizeOnStart;
             MinimizeToTray = Properties.Settings.Default.MinimizeToTray;
-            BlockWinSpace = Properties.Settings.Default.BlockWinSpace;
+            WinSpaceBlockCompletely = Properties.Settings.Default.WinSpaceBlockCompletely;
+            WinSpacePressCount = Properties.Settings.Default.WinSpacePressCount;
             LaunchOnStartup = Properties.Settings.Default.LaunchOnStartup;
         }
 
@@ -34,7 +36,8 @@ namespace KeyboardLayoutWatcher
             Properties.Settings.Default.ShowAlertOnLayoutChange = ShowAlertOnLayoutChange;
             Properties.Settings.Default.MinimizeOnStart = MinimizeOnStart;
             Properties.Settings.Default.MinimizeToTray = MinimizeToTray;
-            Properties.Settings.Default.BlockWinSpace = BlockWinSpace;
+            Properties.Settings.Default.WinSpaceBlockCompletely = WinSpaceBlockCompletely;
+            Properties.Settings.Default.WinSpacePressCount = WinSpacePressCount;
             Properties.Settings.Default.LaunchOnStartup = LaunchOnStartup;
             Properties.Settings.Default.Save();
 

@@ -67,7 +67,10 @@ namespace KeyboardLayoutWatcher
         // New components
         private KeyboardHook _keyboardHook;
         private TrayManager _trayManager;
-        private CheckBox _chkBlockWinSpace;
+        private RadioButton _rbBlockCompletely;
+        private RadioButton _rbAllowMultiPress;
+        private NumericUpDown _nudPressCount;
+        private Label _lblTimes;
         private CheckBox _chkShowAlert;
         private CheckBox _chkMinimizeOnStart;
         private CheckBox _chkMinimizeToTray;
@@ -90,7 +93,7 @@ namespace KeyboardLayoutWatcher
         {
             this.Text = "Keyboard Layout Watcher";
             this.Width = 400;
-            this.Height = 248;
+            this.Height = 276;
 
             // Load application icon from embedded resource
             this.Icon = Properties.Resources.icon;
@@ -119,13 +122,64 @@ namespace KeyboardLayoutWatcher
             };
             this.Controls.Add(separator);
 
-            // Checkboxes
+            // Win+Space options - Radio buttons
             int yPos = 55;
             int spacing = 28;
 
-            _chkBlockWinSpace = CreateCheckBox("Block Win+Space (triple-press to switch)", yPos);
+            _rbBlockCompletely = new RadioButton
+            {
+                Text = "Block Win+Space completely",
+                Location = new Point(15, yPos),
+                Size = new Size(360, 24),
+                Font = new Font("Segoe UI", 10),
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30),
+                FlatStyle = FlatStyle.Flat
+            };
+            _rbBlockCompletely.CheckedChanged += RadioButton_CheckedChanged;
+            this.Controls.Add(_rbBlockCompletely);
             yPos += spacing;
 
+            _rbAllowMultiPress = new RadioButton
+            {
+                Text = "Allow Win+Space after pressing",
+                Location = new Point(15, yPos),
+                Size = new Size(230, 24),
+                Font = new Font("Segoe UI", 10),
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30),
+                FlatStyle = FlatStyle.Flat
+            };
+            _rbAllowMultiPress.CheckedChanged += RadioButton_CheckedChanged;
+            this.Controls.Add(_rbAllowMultiPress);
+
+            _nudPressCount = new NumericUpDown
+            {
+                Location = new Point(250, yPos),
+                Size = new Size(45, 24),
+                Minimum = 2,
+                Maximum = 5,
+                Value = 3,
+                Font = new Font("Segoe UI", 10),
+                BackColor = Color.FromArgb(50, 50, 50),
+                ForeColor = Color.White
+            };
+            _nudPressCount.ValueChanged += NudPressCount_ValueChanged;
+            this.Controls.Add(_nudPressCount);
+
+            _lblTimes = new Label
+            {
+                Text = "times",
+                Location = new Point(300, yPos + 2),
+                Size = new Size(50, 24),
+                Font = new Font("Segoe UI", 10),
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30)
+            };
+            this.Controls.Add(_lblTimes);
+            yPos += spacing;
+
+            // Other checkboxes
             _chkShowAlert = CreateCheckBox("Show alert on layout change", yPos);
             yPos += spacing;
 
@@ -205,13 +259,21 @@ namespace KeyboardLayoutWatcher
         {
             _isLoading = true;
             var settings = AppSettings.Instance;
-            _chkBlockWinSpace.Checked = settings.BlockWinSpace;
+
+            // Win+Space options
+            _rbBlockCompletely.Checked = settings.WinSpaceBlockCompletely;
+            _rbAllowMultiPress.Checked = !settings.WinSpaceBlockCompletely;
+            _nudPressCount.Value = Math.Max(2, Math.Min(5, settings.WinSpacePressCount));
+            _nudPressCount.Enabled = !settings.WinSpaceBlockCompletely;
+            _lblTimes.Enabled = !settings.WinSpaceBlockCompletely;
+
             _chkShowAlert.Checked = settings.ShowAlertOnLayoutChange;
             _chkMinimizeOnStart.Checked = settings.MinimizeOnStart;
             _chkMinimizeToTray.Checked = settings.MinimizeToTray;
             _chkLaunchOnStartup.Checked = IsStartupEnabled();
 
-            _keyboardHook.IsEnabled = settings.BlockWinSpace;
+            _keyboardHook.BlockCompletely = settings.WinSpaceBlockCompletely;
+            _keyboardHook.RequiredPressCount = settings.WinSpacePressCount;
             _isLoading = false;
         }
 
@@ -261,15 +323,39 @@ namespace KeyboardLayoutWatcher
             if (_isLoading) return;
 
             var settings = AppSettings.Instance;
-            settings.BlockWinSpace = _chkBlockWinSpace.Checked;
             settings.ShowAlertOnLayoutChange = _chkShowAlert.Checked;
             settings.MinimizeOnStart = _chkMinimizeOnStart.Checked;
             settings.MinimizeToTray = _chkMinimizeToTray.Checked;
             settings.LaunchOnStartup = _chkLaunchOnStartup.Checked;
             settings.Save();
 
-            _keyboardHook.IsEnabled = settings.BlockWinSpace;
             SetStartupEnabled(_chkLaunchOnStartup.Checked);
+        }
+
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_isLoading) return;
+
+            var settings = AppSettings.Instance;
+            settings.WinSpaceBlockCompletely = _rbBlockCompletely.Checked;
+            settings.Save();
+
+            _keyboardHook.BlockCompletely = settings.WinSpaceBlockCompletely;
+
+            // Enable/disable NumericUpDown based on selection
+            _nudPressCount.Enabled = _rbAllowMultiPress.Checked;
+            _lblTimes.Enabled = _rbAllowMultiPress.Checked;
+        }
+
+        private void NudPressCount_ValueChanged(object sender, EventArgs e)
+        {
+            if (_isLoading) return;
+
+            var settings = AppSettings.Instance;
+            settings.WinSpacePressCount = (int)_nudPressCount.Value;
+            settings.Save();
+
+            _keyboardHook.RequiredPressCount = settings.WinSpacePressCount;
         }
 
         private void KeyboardHook_StatusChanged(object sender, string status)

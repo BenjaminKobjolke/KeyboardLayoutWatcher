@@ -55,7 +55,8 @@ namespace KeyboardLayoutWatcher
         // Events
         public event EventHandler<string> StatusChanged;
 
-        public bool IsEnabled { get; set; } = true;
+        public bool BlockCompletely { get; set; } = true;
+        public int RequiredPressCount { get; set; } = 3;
 
         public KeyboardHook()
         {
@@ -84,7 +85,7 @@ namespace KeyboardLayoutWatcher
 
         private IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            if (nCode >= 0 && IsEnabled)
+            if (nCode >= 0)
             {
                 int msg = wParam.ToInt32();
                 if (msg == WM_KEYDOWN || msg == WM_SYSKEYDOWN)
@@ -111,6 +112,13 @@ namespace KeyboardLayoutWatcher
 
         private IntPtr HandleWinSpace()
         {
+            // If blocking completely, always block
+            if (BlockCompletely)
+            {
+                return (IntPtr)1;
+            }
+
+            // Multi-press mode - allow after N rapid presses
             int currentTime = Environment.TickCount;
 
             // Reset counter if timeout exceeded
@@ -122,7 +130,7 @@ namespace KeyboardLayoutWatcher
             _lastPressTime = currentTime;
             _pressCount++;
 
-            if (_pressCount >= 3)
+            if (_pressCount >= RequiredPressCount)
             {
                 _pressCount = 0;
                 StatusChanged?.Invoke(this, "Switching...");
