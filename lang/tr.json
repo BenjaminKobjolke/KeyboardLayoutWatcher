@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Göster",
-    "exit": "Çıkış"
+    "exit": "Çıkış",
+    "more_tools": "Daha fazla araç"
   },
   "alert": {
     "title": "Düzen değişti",
@@ -26,5 +27,8 @@
     "layout_display": "Düzen: :layout | Dil: :language",
     "layout_display_hkl": "Düzen: :layout | HKL: :hkl",
     "switching": "Değiştiriliyor..."
+  },
+  "links": {
+    "more_tools": "İş akışınızı geliştirmek için daha fazla araç"
   }
 }

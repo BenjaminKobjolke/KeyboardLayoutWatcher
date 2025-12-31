@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "காட்டு",
-    "exit": "வெளியேறு"
+    "exit": "வெளியேறு",
+    "more_tools": "மேலும் கருவிகள்"
   },
   "alert": {
     "title": "லேஅவுட் மாற்றப்பட்டது",
@@ -26,5 +27,8 @@
     "layout_display": "அமைப்பு: :layout | மொழி: :language",
     "layout_display_hkl": "அமைப்பு: :layout | HKL: :hkl",
     "switching": "மாற்றப்படுகிறது..."
+  },
+  "links": {
+    "more_tools": "உன் வேலைநெறியை மேம்படுத்த உதவும் கூடுதல் கருவிகள்"
   }
 }

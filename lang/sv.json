@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Visa",
-    "exit": "Avsluta"
+    "exit": "Avsluta",
+    "more_tools": "Fler verktyg"
   },
   "alert": {
     "title": "Tangentbordslayout ändrad",
@@ -26,5 +27,8 @@
     "layout_display": "Layout: :layout | Språk: :language",
     "layout_display_hkl": "Layout: :layout | HKL: :hkl",
     "switching": "Byter..."
+  },
+  "links": {
+    "more_tools": "Fler verktyg för att förbättra ditt arbetsflöde"
   }
 }

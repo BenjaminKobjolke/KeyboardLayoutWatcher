@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Mostrar",
-    "exit": "Salir"
+    "exit": "Salir",
+    "more_tools": "Más herramientas"
   },
   "alert": {
     "title": "Distribución cambiada",
@@ -26,5 +27,8 @@
     "layout_display": "Distribución: :layout | Idioma: :language",
     "layout_display_hkl": "Distribución: :layout | HKL: :hkl",
     "switching": "Cambiando..."
+  },
+  "links": {
+    "more_tools": "Más herramientas para mejorar tu flujo de trabajo"
   }
 }

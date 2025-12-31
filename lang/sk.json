@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Zobraziť",
-    "exit": "Ukončiť"
+    "exit": "Ukončiť",
+    "more_tools": "Viac nástrojov"
   },
   "alert": {
     "title": "Rozloženie zmenené",
@@ -26,5 +27,8 @@
     "layout_display": "Rozloženie: :layout | Jazyk: :language",
     "layout_display_hkl": "Rozloženie: :layout | HKL: :hkl",
     "switching": "Prepínam..."
+  },
+  "links": {
+    "more_tools": "Ďalšie nástroje na zlepšenie pracovného toku"
   }
 }

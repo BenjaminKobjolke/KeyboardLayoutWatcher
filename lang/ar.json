@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "إظهار",
-    "exit": "خروج"
+    "exit": "خروج",
+    "more_tools": "أدوات إضافية"
   },
   "alert": {
     "title": "تم تغيير التخطيط",
@@ -26,5 +27,8 @@
     "layout_display": "التخطيط: :layout | اللغة: :language",
     "layout_display_hkl": "التخطيط: :layout | HKL: :hkl",
     "switching": "جاري التبديل..."
+  },
+  "links": {
+    "more_tools": "المزيد من الأدوات لتحسين سير عملك"
   }
 }

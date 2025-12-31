@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Näytä",
-    "exit": "Poistu"
+    "exit": "Poistu",
+    "more_tools": "Lisätyökalut"
   },
   "alert": {
     "title": "Asettelu vaihdettu",
@@ -26,5 +27,8 @@
     "layout_display": "Asettelu: :layout | Kieli: :language",
     "layout_display_hkl": "Asettelu: :layout | HKL: :hkl",
     "switching": "Vaihdetaan..."
+  },
+  "links": {
+    "more_tools": "Lisää työkaluja työnkulun tehostamiseen"
   }
 }

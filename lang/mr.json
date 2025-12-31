@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "दाखवा",
-    "exit": "बाहेर पडा"
+    "exit": "बाहेर पडा",
+    "more_tools": "अधिक साधने"
   },
   "alert": {
     "title": "लेआउट बदलला",
@@ -26,5 +27,8 @@
     "layout_display": "लेआउट: :layout | भाषा: :language",
     "layout_display_hkl": "लेआउट: :layout | HKL: :hkl",
     "switching": "स्विच करत आहे..."
+  },
+  "links": {
+    "more_tools": "तुमचा कार्यप्रवाह सुधारण्यासाठी आणखी साधने"
   }
 }

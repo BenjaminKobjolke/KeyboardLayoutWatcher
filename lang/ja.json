@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "表示",
-    "exit": "終了"
+    "exit": "終了",
+    "more_tools": "その他のツール"
   },
   "alert": {
     "title": "レイアウトが変更されました",
@@ -26,5 +27,8 @@
     "layout_display": "レイアウト: :layout | 言語: :language",
     "layout_display_hkl": "レイアウト: :layout | HKL: :hkl",
     "switching": "切り替え中..."
+  },
+  "links": {
+    "more_tools": "作業を効率化するツールをもっと見る"
   }
 }

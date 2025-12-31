@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "کھولیں",
-    "exit": "بند کریں"
+    "exit": "بند کریں",
+    "more_tools": "مزید ٹولز"
   },
   "alert": {
     "title": "لے آؤٹ بدل گیا",
@@ -26,5 +27,8 @@
     "layout_display": "لے آؤٹ: :layout | زبان: :language",
     "layout_display_hkl": "لے آؤٹ: :layout | HKL: :hkl",
     "switching": "بدل رہا ہے..."
+  },
+  "links": {
+    "more_tools": "اپنے ورک فلو کو بہتر بنانے کے لیے مزید ٹولز"
   }
 }

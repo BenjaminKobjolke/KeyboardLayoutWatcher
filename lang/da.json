@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Vis",
-    "exit": "Afslut"
+    "exit": "Afslut",
+    "more_tools": "Flere værktøjer"
   },
   "alert": {
     "title": "Layout ændret",
@@ -26,5 +27,8 @@
     "layout_display": "Layout: :layout | Sprog: :language",
     "layout_display_hkl": "Layout: :layout | HKL: :hkl",
     "switching": "Skifter..."
+  },
+  "links": {
+    "more_tools": "Flere værktøjer til at forbedre din arbejdsgang"
   }
 }

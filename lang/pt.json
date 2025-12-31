@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Mostrar",
-    "exit": "Sair"
+    "exit": "Sair",
+    "more_tools": "Mais ferramentas"
   },
   "alert": {
     "title": "Layout alterado",
@@ -26,5 +27,8 @@
     "layout_display": "Layout: :layout | Idioma: :language",
     "layout_display_hkl": "Layout: :layout | HKL: :hkl",
     "switching": "Trocando..."
+  },
+  "links": {
+    "more_tools": "Mais ferramentas para melhorar o teu fluxo de trabalho"
   }
 }

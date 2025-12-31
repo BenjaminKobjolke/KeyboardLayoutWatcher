@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "കാണിക്കുക",
-    "exit": "പുറപ്പെട്ടുക"
+    "exit": "പുറപ്പെട്ടുക",
+    "more_tools": "കൂടുതൽ ടൂളുകൾ"
   },
   "alert": {
     "title": "ലേഔട്ട് മാറി",
@@ -26,5 +27,8 @@
     "layout_display": "ലേഔട്ട്: :layout | ഭാഷ: :language",
     "layout_display_hkl": "ലേഔട്ട്: :layout | HKL: :hkl",
     "switching": "മാറ്റുന്നു..."
+  },
+  "links": {
+    "more_tools": "പ്രവൃത്തി പ്രവാഹം മെച്ചപ്പെടുത്താൻ കൂടുതൽ ഉപകരണങ്ങൾ"
   }
 }

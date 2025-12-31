@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Rodyti",
-    "exit": "Išeiti"
+    "exit": "Išeiti",
+    "more_tools": "Daugiau įrankių"
   },
   "alert": {
     "title": "Išdėstymas pakeistas",
@@ -26,5 +27,8 @@
     "layout_display": "Išdėstymas: :layout | Kalba: :language",
     "layout_display_hkl": "Išdėstymas: :layout | HKL: :hkl",
     "switching": "Perjungiama..."
+  },
+  "links": {
+    "more_tools": "Daugiau įrankių, skirtų pagerinti tavo darbo eigą"
   }
 }

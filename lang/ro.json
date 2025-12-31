@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Afișează",
-    "exit": "Ieșire"
+    "exit": "Ieșire",
+    "more_tools": "Mai multe instrumente"
   },
   "alert": {
     "title": "Layout schimbat",
@@ -26,5 +27,8 @@
     "layout_display": "Layout: :layout | Limba: :language",
     "layout_display_hkl": "Layout: :layout | HKL: :hkl",
     "switching": "Se comută..."
+  },
+  "links": {
+    "more_tools": "Mai multe instrumente pentru a-ți îmbunătăți fluxul de lucru"
   }
 }

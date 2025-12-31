@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "দেখাও",
-    "exit": "বের হও"
+    "exit": "বের হও",
+    "more_tools": "আরও সরঞ্জাম"
   },
   "alert": {
     "title": "লেআউট বদলে গেছে",
@@ -26,5 +27,8 @@
     "layout_display": "লেআউট: :layout | ভাষা: :language",
     "layout_display_hkl": "লেআউট: :layout | HKL: :hkl",
     "switching": "বদলানো হচ্ছে..."
+  },
+  "links": {
+    "more_tools": "তোমার কাজের প্রবাহ উন্নত করার জন্য আরও সরঞ্জাম"
   }
 }

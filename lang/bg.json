@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Покажи",
-    "exit": "Изход"
+    "exit": "Изход",
+    "more_tools": "Още инструменти"
   },
   "alert": {
     "title": "Подредбата е сменена",
@@ -26,5 +27,8 @@
     "layout_display": "Подредба: :layout | Език: :language",
     "layout_display_hkl": "Подредба: :layout | HKL: :hkl",
     "switching": "Превключване..."
+  },
+  "links": {
+    "more_tools": "Още инструменти за подобряване на работния ти процес"
   }
 }

@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "הצג",
-    "exit": "צא"
+    "exit": "צא",
+    "more_tools": "עוד כלים"
   },
   "alert": {
     "title": "הפריסה שונתה",
@@ -26,5 +27,8 @@
     "layout_display": "פריסה: :layout | שפה: :language",
     "layout_display_hkl": "פריסה: :layout | HKL: :hkl",
     "switching": "מעבר..."
+  },
+  "links": {
+    "more_tools": "עוד כלים לשיפור זרימת העבודה שלך"
   }
 }

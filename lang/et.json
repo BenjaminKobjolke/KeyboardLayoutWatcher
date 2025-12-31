@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Näita",
-    "exit": "Välju"
+    "exit": "Välju",
+    "more_tools": "Rohkem tööriistu"
   },
   "alert": {
     "title": "Paigutus muutus",
@@ -26,5 +27,8 @@
     "layout_display": "Paigutus: :layout | Keel: :language",
     "layout_display_hkl": "Paigutus: :layout | HKL: :hkl",
     "switching": "Vahetan..."
+  },
+  "links": {
+    "more_tools": "Veel tööriistu töövoo parandamiseks"
   }
 }

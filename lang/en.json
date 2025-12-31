@@ -21,7 +21,11 @@
     },
     "tray": {
         "show": "Show",
+        "more_tools": "More Tools",
         "exit": "Exit"
+    },
+    "links": {
+        "more_tools": "More tools to improve your workflow"
     },
     "alert": {
         "title": "Layout Changed",

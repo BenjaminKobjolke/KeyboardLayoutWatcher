@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "చూపించు",
-    "exit": "నిష్క్రమించు"
+    "exit": "నిష్క్రమించు",
+    "more_tools": "మరిన్ని టూల్‌లు"
   },
   "alert": {
     "title": "లేఅవుట్ మారింది",
@@ -26,5 +27,8 @@
     "layout_display": "లేఅవుట్: :layout | భాష: :language",
     "layout_display_hkl": "లేఅవుట్: :layout | HKL: :hkl",
     "switching": "మారుతోంది..."
+  },
+  "links": {
+    "more_tools": "మీ వర్క్‌ఫ్లోను మెరుగుపరచడానికి మరిన్ని సాధనాలు"
   }
 }

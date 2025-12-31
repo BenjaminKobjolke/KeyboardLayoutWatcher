@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Toon",
-    "exit": "Afsluiten"
+    "exit": "Afsluiten",
+    "more_tools": "Meer tools"
   },
   "alert": {
     "title": "Toetsenbordindeling gewijzigd",
@@ -26,5 +27,8 @@
     "layout_display": "Indeling: :layout | Taal: :language",
     "layout_display_hkl": "Indeling: :layout | HKL: :hkl",
     "switching": "Wisselen..."
+  },
+  "links": {
+    "more_tools": "Meer tools om je workflow te verbeteren"
   }
 }

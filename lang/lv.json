@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Rādīt",
-    "exit": "Iziet"
+    "exit": "Iziet",
+    "more_tools": "Vairāk rīku"
   },
   "alert": {
     "title": "Izkārtojums mainīts",
@@ -26,5 +27,8 @@
     "layout_display": "Izkārtojums: :layout | Valoda: :language",
     "layout_display_hkl": "Izkārtojums: :layout | HKL: :hkl",
     "switching": "Pārslēdzas..."
+  },
+  "links": {
+    "more_tools": "Vairāk rīku, lai uzlabotu tavu darba plūsmu"
   }
 }

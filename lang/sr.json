@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Prikaži",
-    "exit": "Izađi"
+    "exit": "Izađi",
+    "more_tools": "Još alata"
   },
   "alert": {
     "title": "Raspored promenjen",
@@ -26,5 +27,8 @@
     "layout_display": "Raspored: :layout | Jezik: :language",
     "layout_display_hkl": "Raspored: :layout | HKL: :hkl",
     "switching": "Prebacivanje..."
+  },
+  "links": {
+    "more_tools": "Više alata za poboljšanje tvog radnog toka"
   }
 }

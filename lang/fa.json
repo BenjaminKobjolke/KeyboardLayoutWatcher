@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "نمایش",
-    "exit": "خروج"
+    "exit": "خروج",
+    "more_tools": "ابزارهای بیشتر"
   },
   "alert": {
     "title": "چیدمان صفحه‌کلید تغییر کرد",
@@ -26,5 +27,8 @@
     "layout_display": "چیدمان: :layout | زبان: :language",
     "layout_display_hkl": "چیدمان: :layout | HKL: :hkl",
     "switching": "در حال تغییر..."
+  },
+  "links": {
+    "more_tools": "ابزارهای بیشتر برای بهبود گردش کارت"
   }
 }

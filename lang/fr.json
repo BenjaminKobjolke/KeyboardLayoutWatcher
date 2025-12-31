@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Afficher",
-    "exit": "Quitter"
+    "exit": "Quitter",
+    "more_tools": "Plus d'outils"
   },
   "alert": {
     "title": "Disposition modifiée",
@@ -26,5 +27,8 @@
     "layout_display": "Disposition : :layout | Langue : :language",
     "layout_display_hkl": "Disposition : :layout | HKL : :hkl",
     "switching": "Changement en cours..."
+  },
+  "links": {
+    "more_tools": "Plus d'outils pour améliorer votre flux de travail"
   }
 }

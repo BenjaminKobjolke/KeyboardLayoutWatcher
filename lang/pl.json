@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Pokaż",
-    "exit": "Zakończ"
+    "exit": "Zakończ",
+    "more_tools": "Więcej narzędzi"
   },
   "alert": {
     "title": "Zmieniono układ",
@@ -26,5 +27,8 @@
     "layout_display": "Układ: :layout | Język: :language",
     "layout_display_hkl": "Układ: :layout | HKL: :hkl",
     "switching": "Przełączanie..."
+  },
+  "links": {
+    "more_tools": "Więcej narzędzi, które usprawnią twoją pracę"
   }
 }

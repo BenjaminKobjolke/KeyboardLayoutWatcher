@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Vis",
-    "exit": "Avslutt"
+    "exit": "Avslutt",
+    "more_tools": "Flere verktøy"
   },
   "alert": {
     "title": "Tastaturoppsett endret",
@@ -26,5 +27,8 @@
     "layout_display": "Oppsett: :layout | Språk: :language",
     "layout_display_hkl": "Oppsett: :layout | HKL: :hkl",
     "switching": "Bytter..."
+  },
+  "links": {
+    "more_tools": "Flere verktøy for å forbedre arbeidsflyten din"
   }
 }

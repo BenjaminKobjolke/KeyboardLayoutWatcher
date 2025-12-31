@@ -36,6 +36,10 @@ namespace KeyboardLayoutWatcher
             showItem.Click += (s, e) => ShowRequested?.Invoke(this, EventArgs.Empty);
             _contextMenu.Items.Add(showItem);
 
+            var moreToolsItem = new ToolStripMenuItem(_localization.Lang("tray.more_tools"));
+            moreToolsItem.Click += (s, e) => System.Diagnostics.Process.Start("https://www.workflow-tools.com/keyboard-layout-watcher/app-link");
+            _contextMenu.Items.Add(moreToolsItem);
+
             _contextMenu.Items.Add(new ToolStripSeparator());
 
             var exitItem = new ToolStripMenuItem(_localization.Lang("tray.exit"));
@@ -73,14 +77,18 @@ namespace KeyboardLayoutWatcher
 
         public void RefreshLocalization()
         {
-            // Update context menu items
+            // Update context menu items (0=Show, 1=More Tools, 2=Separator, 3=Exit)
             if (_contextMenu.Items.Count > 0)
             {
                 ((ToolStripMenuItem)_contextMenu.Items[0]).Text = _localization.Lang("tray.show");
             }
-            if (_contextMenu.Items.Count > 2)
+            if (_contextMenu.Items.Count > 1)
             {
-                ((ToolStripMenuItem)_contextMenu.Items[2]).Text = _localization.Lang("tray.exit");
+                ((ToolStripMenuItem)_contextMenu.Items[1]).Text = _localization.Lang("tray.more_tools");
+            }
+            if (_contextMenu.Items.Count > 3)
+            {
+                ((ToolStripMenuItem)_contextMenu.Items[3]).Text = _localization.Lang("tray.exit");
             }
         }
 

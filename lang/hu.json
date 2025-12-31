@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Megjelenít",
-    "exit": "Kilépés"
+    "exit": "Kilépés",
+    "more_tools": "További eszközök"
   },
   "alert": {
     "title": "Billentyűzetkiosztás megváltozott",
@@ -26,5 +27,8 @@
     "layout_display": "Kiosztás: :layout | Nyelv: :language",
     "layout_display_hkl": "Kiosztás: :layout | HKL: :hkl",
     "switching": "Váltás..."
+  },
+  "links": {
+    "more_tools": "További eszközök a munkafolyamatod javításához"
   }
 }

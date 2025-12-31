@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "표시",
-    "exit": "종료"
+    "exit": "종료",
+    "more_tools": "도구 더 보기"
   },
   "alert": {
     "title": "레이아웃 변경됨",
@@ -26,5 +27,8 @@
     "layout_display": "레이아웃: :layout | 언어: :language",
     "layout_display_hkl": "레이아웃: :layout | HKL: :hkl",
     "switching": "전환 중..."
+  },
+  "links": {
+    "more_tools": "작업 흐름을 개선할 도구 더 보기"
   }
 }

@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Hiện",
-    "exit": "Thoát"
+    "exit": "Thoát",
+    "more_tools": "Thêm công cụ"
   },
   "alert": {
     "title": "Đã đổi bố cục",
@@ -26,5 +27,8 @@
     "layout_display": "Bố cục: :layout | Ngôn ngữ: :language",
     "layout_display_hkl": "Bố cục: :layout | HKL: :hkl",
     "switching": "Đang chuyển..."
+  },
+  "links": {
+    "more_tools": "Thêm công cụ để cải thiện quy trình làm việc của bạn"
   }
 }

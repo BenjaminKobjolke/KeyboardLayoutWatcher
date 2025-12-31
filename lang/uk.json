@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Показати",
-    "exit": "Вийти"
+    "exit": "Вийти",
+    "more_tools": "Додаткові інструменти"
   },
   "alert": {
     "title": "Розкладка змінена",
@@ -26,5 +27,8 @@
     "layout_display": "Розкладка: :layout | Мова: :language",
     "layout_display_hkl": "Розкладка: :layout | HKL: :hkl",
     "switching": "Перемикаю..."
+  },
+  "links": {
+    "more_tools": "Більше інструментів, щоб покращити твою роботу"
   }
 }

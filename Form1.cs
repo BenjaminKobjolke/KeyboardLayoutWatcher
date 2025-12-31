@@ -80,6 +80,7 @@ namespace KeyboardLayoutWatcher
         private CheckBox _chkLaunchOnStartup;
         private Label _lblLanguage;
         private ComboBox _cmbLanguage;
+        private LinkLabel _lnkMoreTools;
         private ToolTip _statusToolTip;
         private Timer _tooltipTimer;
         private bool _isLoading = true;
@@ -114,7 +115,7 @@ namespace KeyboardLayoutWatcher
         {
             this.Text = _localization.Lang("app.title");
             this.Width = 400;
-            this.Height = 310;  // Increased height for language dropdown
+            this.Height = 340;  // Increased height for link
 
             // Load application icon from embedded resource
             this.Icon = Properties.Resources.icon;
@@ -244,6 +245,23 @@ namespace KeyboardLayoutWatcher
             _cmbLanguage.DataSource = languages;
 
             this.Controls.Add(_cmbLanguage);
+            yPos += spacing + 10;  // Extra spacing before link
+
+            // More tools link
+            _lnkMoreTools = new LinkLabel
+            {
+                Text = _localization.Lang("links.more_tools"),
+                Location = new Point(15, yPos),
+                Size = new Size(370, 24),
+                Font = new Font("Segoe UI", 9, FontStyle.Underline),
+                LinkColor = Color.White,
+                ActiveLinkColor = Color.LightGray,
+                VisitedLinkColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30),
+                LinkBehavior = LinkBehavior.AlwaysUnderline
+            };
+            _lnkMoreTools.LinkClicked += (s, args) => System.Diagnostics.Process.Start("https://www.workflow-tools.com/keyboard-layout-watcher/app-link");
+            this.Controls.Add(_lnkMoreTools);
 
             // Status tooltip
             _statusToolTip = new ToolTip
@@ -472,6 +490,9 @@ namespace KeyboardLayoutWatcher
             _chkMinimizeOnStart.Text = _localization.Lang("settings.minimize_on_start");
             _chkMinimizeToTray.Text = _localization.Lang("settings.minimize_to_tray");
             _chkLaunchOnStartup.Text = _localization.Lang("settings.launch_on_startup");
+
+            // Link
+            _lnkMoreTools.Text = _localization.Lang("links.more_tools");
 
             // Tray manager
             _trayManager?.RefreshLocalization();

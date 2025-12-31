@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "แสดง",
-    "exit": "ออก"
+    "exit": "ออก",
+    "more_tools": "เครื่องมือเพิ่มเติม"
   },
   "alert": {
     "title": "เลย์เอาต์เปลี่ยนแล้ว",
@@ -26,5 +27,8 @@
     "layout_display": "เลย์เอาต์: :layout | ภาษา: :language",
     "layout_display_hkl": "เลย์เอาต์: :layout | HKL: :hkl",
     "switching": "กำลังสลับ..."
+  },
+  "links": {
+    "more_tools": "เครื่องมือเพิ่มเติมเพื่อช่วยปรับปรุงการทำงานของคุณ"
   }
 }

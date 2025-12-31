@@ -15,7 +15,8 @@
   },
   "tray": {
     "show": "Pokaži",
-    "exit": "Izhod"
+    "exit": "Izhod",
+    "more_tools": "Več orodij"
   },
   "alert": {
     "title": "Postavitev spremenjena",
@@ -26,5 +27,8 @@
     "layout_display": "Postavitev: :layout | Jezik: :language",
     "layout_display_hkl": "Postavitev: :layout | HKL: :hkl",
     "switching": "Preklapljam..."
+  },
+  "links": {
+    "more_tools": "Več orodij za izboljšanje tvojega delovnega toka"
   }
 }
