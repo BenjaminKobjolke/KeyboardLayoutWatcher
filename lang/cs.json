@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Jazyk",
+    "block_completely": "Zcela zablokovat Win+Space",
+    "allow_multi_press": "Povolit Win+Space po stisknutí",
+    "times": "krát",
+    "show_alert": "Zobrazit upozornění při změně rozložení",
+    "minimize_on_start": "Minimalizovat při spuštění",
+    "minimize_to_tray": "Minimalizovat do oznamovací oblasti",
+    "launch_on_startup": "Spouštět při startu Windows",
+    "restart_required": "Pro změnu jazyka prosím restartuj aplikaci."
+  },
+  "tray": {
+    "show": "Zobrazit",
+    "exit": "Ukončit"
+  },
+  "alert": {
+    "title": "Rozložení změněno",
+    "message": "Rozložení klávesnice změněno na:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Rozložení: :layout | Jazyk: :language",
+    "layout_display_hkl": "Rozložení: :layout | HKL: :hkl",
+    "switching": "Přepínání..."
+  }
+}

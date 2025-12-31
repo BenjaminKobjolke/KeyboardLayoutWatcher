@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Kalba",
+    "block_completely": "Visiškai užblokuoti Win+Space",
+    "allow_multi_press": "Leisti Win+Space po paspaudimų",
+    "times": "kartų",
+    "show_alert": "Rodyti pranešimą pakeitus klaviatūros išdėstymą",
+    "minimize_on_start": "Minimizuoti paleidžiant",
+    "minimize_to_tray": "Minimizuoti į sistemos dėklą",
+    "launch_on_startup": "Paleisti Windows paleidimo metu",
+    "restart_required": "Paleisk programą iš naujo, kad kalbos pakeitimas įsigaliotų."
+  },
+  "tray": {
+    "show": "Rodyti",
+    "exit": "Išeiti"
+  },
+  "alert": {
+    "title": "Išdėstymas pakeistas",
+    "message": "Klaviatūros išdėstymas pakeistas į:\n:layout",
+    "ok": "Gerai"
+  },
+  "status": {
+    "layout_display": "Išdėstymas: :layout | Kalba: :language",
+    "layout_display_hkl": "Išdėstymas: :layout | HKL: :hkl",
+    "switching": "Perjungiama..."
+  }
+}

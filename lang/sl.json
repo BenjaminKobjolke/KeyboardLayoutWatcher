@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Jezik",
+    "block_completely": "Popolnoma blokiraj Win+Space",
+    "allow_multi_press": "Dovoli Win+Space po pritiskih",
+    "times": "krat",
+    "show_alert": "Prikaži opozorilo ob spremembi postavitve",
+    "minimize_on_start": "Zaženi pomanjšano ob zagonu",
+    "minimize_to_tray": "Pomanjšaj v sistemski pladenj",
+    "launch_on_startup": "Zaženi ob zagonu Windows",
+    "restart_required": "Ponovno zaženi aplikacijo, da sprememba jezika začne veljati."
+  },
+  "tray": {
+    "show": "Pokaži",
+    "exit": "Izhod"
+  },
+  "alert": {
+    "title": "Postavitev spremenjena",
+    "message": "Postavitev tipkovnice spremenjena v:\n:layout",
+    "ok": "V redu"
+  },
+  "status": {
+    "layout_display": "Postavitev: :layout | Jezik: :language",
+    "layout_display_hkl": "Postavitev: :layout | HKL: :hkl",
+    "switching": "Preklapljam..."
+  }
+}

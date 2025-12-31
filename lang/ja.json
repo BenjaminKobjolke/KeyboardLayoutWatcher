@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "言語",
+    "block_completely": "Win+Space を完全にブロックする",
+    "allow_multi_press": "連続押しで Win+Space を許可する",
+    "times": "回",
+    "show_alert": "レイアウト変更時に通知を表示する",
+    "minimize_on_start": "起動時に最小化する",
+    "minimize_to_tray": "タスクトレイに最小化する",
+    "launch_on_startup": "Windows 起動時に自動起動する",
+    "restart_required": "言語変更を反映するにはアプリを再起動してください。"
+  },
+  "tray": {
+    "show": "表示",
+    "exit": "終了"
+  },
+  "alert": {
+    "title": "レイアウトが変更されました",
+    "message": "キーボードレイアウトが次のものに変更されました:\\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "レイアウト: :layout | 言語: :language",
+    "layout_display_hkl": "レイアウト: :layout | HKL: :hkl",
+    "switching": "切り替え中..."
+  }
+}

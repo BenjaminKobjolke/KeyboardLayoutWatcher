@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Språk",
+    "block_completely": "Blockera Win+Space helt",
+    "allow_multi_press": "Tillåt Win+Space efter att du tryckt",
+    "times": "gånger",
+    "show_alert": "Visa avisering vid layoutbyte",
+    "minimize_on_start": "Minimera vid start",
+    "minimize_to_tray": "Minimera till systemfältet",
+    "launch_on_startup": "Starta med Windows",
+    "restart_required": "Starta om appen för att språkändringen ska börja gälla."
+  },
+  "tray": {
+    "show": "Visa",
+    "exit": "Avsluta"
+  },
+  "alert": {
+    "title": "Tangentbordslayout ändrad",
+    "message": "Tangentbordslayout ändrad till:\\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Layout: :layout | Språk: :language",
+    "layout_display_hkl": "Layout: :layout | HKL: :hkl",
+    "switching": "Byter..."
+  }
+}

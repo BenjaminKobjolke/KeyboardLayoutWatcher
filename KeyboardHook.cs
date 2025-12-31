@@ -2,11 +2,13 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using CSharpLocalization;
 
 namespace KeyboardLayoutWatcher
 {
     public class KeyboardHook : IDisposable
     {
+        private Localization _localization;
         // P/Invoke declarations
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
@@ -58,8 +60,9 @@ namespace KeyboardLayoutWatcher
         public bool BlockCompletely { get; set; } = true;
         public int RequiredPressCount { get; set; } = 3;
 
-        public KeyboardHook()
+        public KeyboardHook(Localization localization)
         {
+            _localization = localization;
             _proc = HookCallback;
         }
 
@@ -133,7 +136,7 @@ namespace KeyboardLayoutWatcher
             if (_pressCount >= RequiredPressCount)
             {
                 _pressCount = 0;
-                StatusChanged?.Invoke(this, "Switching...");
+                StatusChanged?.Invoke(this, _localization.Lang("status.switching"));
                 // Allow the keypress through
                 return CallNextHookEx(_hookId, 0, IntPtr.Zero, IntPtr.Zero);
             }

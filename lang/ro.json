@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Limbă",
+    "block_completely": "Blochează complet Win+Space",
+    "allow_multi_press": "Permite Win+Space după apăsări",
+    "times": "apăsări",
+    "show_alert": "Afișează alertă la schimbarea layout-ului tastaturii",
+    "minimize_on_start": "Minimizează la pornire",
+    "minimize_to_tray": "Minimizează în zona de notificare",
+    "launch_on_startup": "Pornește odată cu Windows",
+    "restart_required": "Te rog repornește aplicația pentru ca schimbarea limbii să aibă efect."
+  },
+  "tray": {
+    "show": "Afișează",
+    "exit": "Ieșire"
+  },
+  "alert": {
+    "title": "Layout schimbat",
+    "message": "Layout-ul tastaturii a fost schimbat în:\\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Layout: :layout | Limba: :language",
+    "layout_display_hkl": "Layout: :layout | HKL: :hkl",
+    "switching": "Se comută..."
+  }
+}

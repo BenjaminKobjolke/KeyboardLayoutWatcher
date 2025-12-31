@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Nyelv",
+    "block_completely": "Win+Space teljes blokkolása",
+    "allow_multi_press": "Win+Space engedélyezése többszöri lenyomás után",
+    "times": "szer",
+    "show_alert": "Értesítés megjelenítése billentyűzetkiosztás váltásakor",
+    "minimize_on_start": "Indításkor minimalizálás",
+    "minimize_to_tray": "Tálcára minimalizálás",
+    "launch_on_startup": "Futtatás a Windows indításakor",
+    "restart_required": "Kérjük, indítsd újra az alkalmazást, hogy a nyelvváltoztatás érvénybe lépjen."
+  },
+  "tray": {
+    "show": "Megjelenít",
+    "exit": "Kilépés"
+  },
+  "alert": {
+    "title": "Billentyűzetkiosztás megváltozott",
+    "message": "Billentyűzetkiosztás megváltozott:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Kiosztás: :layout | Nyelv: :language",
+    "layout_display_hkl": "Kiosztás: :layout | HKL: :hkl",
+    "switching": "Váltás..."
+  }
+}

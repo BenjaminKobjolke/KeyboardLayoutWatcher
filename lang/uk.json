@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Мова",
+    "block_completely": "Повністю блокувати Win+Space",
+    "allow_multi_press": "Дозволити Win+Space після натискання",
+    "times": "разів",
+    "show_alert": "Показувати сповіщення при зміні розкладки",
+    "minimize_on_start": "Згорнути при запуску",
+    "minimize_to_tray": "Згорнути в трей",
+    "launch_on_startup": "Запускати разом із Windows",
+    "restart_required": "Перезапусти програму, щоб зміни мови набрали чинності."
+  },
+  "tray": {
+    "show": "Показати",
+    "exit": "Вийти"
+  },
+  "alert": {
+    "title": "Розкладка змінена",
+    "message": "Розкладка клавіатури змінена на:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Розкладка: :layout | Мова: :language",
+    "layout_display_hkl": "Розкладка: :layout | HKL: :hkl",
+    "switching": "Перемикаю..."
+  }
+}

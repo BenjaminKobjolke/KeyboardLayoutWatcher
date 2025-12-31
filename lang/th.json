@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "ภาษา",
+    "block_completely": "บล็อก Win+Space ทั้งหมด",
+    "allow_multi_press": "อนุญาตให้ใช้ Win+Space หลังจากกด",
+    "times": "ครั้ง",
+    "show_alert": "แสดงการแจ้งเตือนเมื่อเปลี่ยนเลย์เอาต์",
+    "minimize_on_start": "ย่อเมื่อเริ่มโปรแกรม",
+    "minimize_to_tray": "ย่อไปที่ถาดระบบ",
+    "launch_on_startup": "เปิดโปรแกรมเมื่อเริ่มต้น Windows",
+    "restart_required": "โปรดรีสตาร์ทแอปเพื่อให้การเปลี่ยนภาษามีผล."
+  },
+  "tray": {
+    "show": "แสดง",
+    "exit": "ออก"
+  },
+  "alert": {
+    "title": "เลย์เอาต์เปลี่ยนแล้ว",
+    "message": "เปลี่ยนเลย์เอาต์เป็น:\n:layout",
+    "ok": "ตกลง"
+  },
+  "status": {
+    "layout_display": "เลย์เอาต์: :layout | ภาษา: :language",
+    "layout_display_hkl": "เลย์เอาต์: :layout | HKL: :hkl",
+    "switching": "กำลังสลับ..."
+  }
+}

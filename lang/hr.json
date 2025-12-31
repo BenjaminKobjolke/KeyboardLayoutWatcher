@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Jezik",
+    "block_completely": "Potpuno blokiraj Win+Space",
+    "allow_multi_press": "Dopusti Win+Space nakon pritiskanja",
+    "times": "puta",
+    "show_alert": "Prikaži obavijest pri promjeni rasporeda",
+    "minimize_on_start": "Minimiziraj pri pokretanju",
+    "minimize_to_tray": "Minimiziraj u sistemsku ladicu",
+    "launch_on_startup": "Pokreni pri pokretanju Windowsa",
+    "restart_required": "Ponovno pokreni aplikaciju da bi promjena jezika stupila na snagu."
+  },
+  "tray": {
+    "show": "Prikaži",
+    "exit": "Izađi"
+  },
+  "alert": {
+    "title": "Raspored promijenjen",
+    "message": "Raspored tipkovnice promijenjen u:\\n:layout",
+    "ok": "U redu"
+  },
+  "status": {
+    "layout_display": "Raspored: :layout | Jezik: :language",
+    "layout_display_hkl": "Raspored: :layout | HKL: :hkl",
+    "switching": "Prebacivanje..."
+  }
+}

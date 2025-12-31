@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "语言",
+    "block_completely": "完全禁用 Win+Space",
+    "allow_multi_press": "按下后允许使用 Win+Space",
+    "times": "次",
+    "show_alert": "在布局更改时显示提醒",
+    "minimize_on_start": "启动时最小化",
+    "minimize_to_tray": "最小化到托盘",
+    "launch_on_startup": "随 Windows 一起启动",
+    "restart_required": "请重启应用以使语言更改生效。"
+  },
+  "tray": {
+    "show": "显示",
+    "exit": "退出"
+  },
+  "alert": {
+    "title": "布局已更改",
+    "message": "键盘布局已更改为：\n:layout",
+    "ok": "确定"
+  },
+  "status": {
+    "layout_display": "布局：:layout | 语言：:language",
+    "layout_display_hkl": "布局：:layout | HKL：:hkl",
+    "switching": "正在切换..."
+  }
+}

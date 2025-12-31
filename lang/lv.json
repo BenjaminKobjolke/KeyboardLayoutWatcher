@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Valoda",
+    "block_completely": "Pilnībā bloķēt Win+Space",
+    "allow_multi_press": "Atļaut Win+Space pēc nospiešanas",
+    "times": "reizes",
+    "show_alert": "Rādīt brīdinājumu izkārtojuma maiņas laikā",
+    "minimize_on_start": "Palaist minimizētu",
+    "minimize_to_tray": "Minimizēt uz sistēmas tekni",
+    "launch_on_startup": "Palaist Windows startēšanas laikā",
+    "restart_required": "Lūdzu restartējiet lietotni, lai valodas maiņa stātos spēkā."
+  },
+  "tray": {
+    "show": "Rādīt",
+    "exit": "Iziet"
+  },
+  "alert": {
+    "title": "Izkārtojums mainīts",
+    "message": "Tastatūras izkārtojums mainīts uz:\\n:layout",
+    "ok": "Labi"
+  },
+  "status": {
+    "layout_display": "Izkārtojums: :layout | Valoda: :language",
+    "layout_display_hkl": "Izkārtojums: :layout | HKL: :hkl",
+    "switching": "Pārslēdzas..."
+  }
+}

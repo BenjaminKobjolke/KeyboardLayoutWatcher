@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\csharp-localization\src\CSharpLocalization\CSharpLocalization.csproj">
+      <Project>{8A7B5F1E-3D2C-4E6F-9A1B-5C8D7E2F4A3B}</Project>
+      <Name>CSharpLocalization</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -80,6 +86,143 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <EmbeddedResource Include="lang\ar.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.ar.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\bg.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.bg.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\bn.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.bn.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\cs.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.cs.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\da.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.da.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\de.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.de.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\en.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.en.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\es.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.es.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\et.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.et.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\fa.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.fa.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\fi.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.fi.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\fr.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.fr.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\he.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.he.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\hi.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.hi.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\hr.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.hr.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\hu.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.hu.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\it.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.it.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\ja.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.ja.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\ko.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.ko.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\lt.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.lt.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\lv.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.lv.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\ml.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.ml.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\mr.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.mr.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\nl.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.nl.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\no.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.no.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\pl.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.pl.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\pt.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.pt.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\ro.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.ro.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\ru.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.ru.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\sk.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.sk.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\sl.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.sl.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\sr.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.sr.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\sv.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.sv.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\ta.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.ta.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\te.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.te.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\th.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.th.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\tr.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.tr.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\uk.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.uk.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\ur.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.ur.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\vi.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.vi.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\zh.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.zh.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lang\languages.json">
+      <LogicalName>KeyboardLayoutWatcher.lang.languages.json</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
+  <Import Project="packages\Fody.6.8.2\build\Fody.targets" Condition="Exists('packages\Fody.6.8.2\build\Fody.targets')" />
+  <Import Project="packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
 </Project>

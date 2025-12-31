@@ -20,6 +20,7 @@ namespace KeyboardLayoutWatcher
         public bool WinSpaceBlockCompletely { get; set; }  // true = block completely, false = multi-press
         public int WinSpacePressCount { get; set; }        // 2-5
         public bool LaunchOnStartup { get; set; }
+        public string Language { get; set; }               // null = auto-detect, otherwise language code like "en", "de"
 
         public void Load()
         {
@@ -29,6 +30,7 @@ namespace KeyboardLayoutWatcher
             WinSpaceBlockCompletely = Properties.Settings.Default.WinSpaceBlockCompletely;
             WinSpacePressCount = Properties.Settings.Default.WinSpacePressCount;
             LaunchOnStartup = Properties.Settings.Default.LaunchOnStartup;
+            Language = string.IsNullOrEmpty(Properties.Settings.Default.Language) ? null : Properties.Settings.Default.Language;
         }
 
         public void Save()
@@ -39,6 +41,7 @@ namespace KeyboardLayoutWatcher
             Properties.Settings.Default.WinSpaceBlockCompletely = WinSpaceBlockCompletely;
             Properties.Settings.Default.WinSpacePressCount = WinSpacePressCount;
             Properties.Settings.Default.LaunchOnStartup = LaunchOnStartup;
+            Properties.Settings.Default.Language = Language ?? string.Empty;
             Properties.Settings.Default.Save();
 
             SettingsChanged?.Invoke(this, EventArgs.Empty);

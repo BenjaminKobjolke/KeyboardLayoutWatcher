@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "ഭാഷ",
+    "block_completely": "Win+Space പൂർണമായി തടയുക",
+    "allow_multi_press": "അമർത്തുന്നതിന് ശേഷം Win+Space അനുവദിക്കുക",
+    "times": "വട്ടം",
+    "show_alert": "ലേഔട്ട് മാറ്റുമ്പോൾ അലേർട്ട് കാണിക്കുക",
+    "minimize_on_start": "ആരംഭിക്കുമ്പോൾ മിനിമൈസ് ചെയ്യുക",
+    "minimize_to_tray": "ട്രേയ്‌ിലേക്ക് മിനിമൈസ് ചെയ്യുക",
+    "launch_on_startup": "Windows സ്റ്റാർട്ടപ്പിൽ ആരംഭിക്കുക",
+    "restart_required": "ഭാഷ മാറ്റം പ്രാബല്യത്തിൽ വരാൻ, ദയവായി ആപ്ലിക്കേഷൻ വീണ്ടും ആരംഭിക്കുക."
+  },
+  "tray": {
+    "show": "കാണിക്കുക",
+    "exit": "പുറപ്പെട്ടുക"
+  },
+  "alert": {
+    "title": "ലേഔട്ട് മാറി",
+    "message": "കീബോർഡ് ലേഔട്ട് മാറ്റപ്പെട്ടു:\n:layout",
+    "ok": "ശരി"
+  },
+  "status": {
+    "layout_display": "ലേഔട്ട്: :layout | ഭാഷ: :language",
+    "layout_display_hkl": "ലേഔട്ട്: :layout | HKL: :hkl",
+    "switching": "മാറ്റുന്നു..."
+  }
+}

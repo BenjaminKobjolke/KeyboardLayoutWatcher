@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Язык",
+    "block_completely": "Полностью блокировать Win+Space",
+    "allow_multi_press": "Разрешать Win+Space при повторных нажатиях",
+    "times": "раз",
+    "show_alert": "Показывать уведомление при смене раскладки",
+    "minimize_on_start": "Сворачивать при запуске",
+    "minimize_to_tray": "Сворачивать в трей",
+    "launch_on_startup": "Запускать при старте Windows",
+    "restart_required": "Перезапусти приложение, чтобы изменение языка вступило в силу."
+  },
+  "tray": {
+    "show": "Показать",
+    "exit": "Выйти"
+  },
+  "alert": {
+    "title": "Раскладка изменена",
+    "message": "Раскладка клавиатуры изменилась:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Раскладка: :layout | Язык: :language",
+    "layout_display_hkl": "Раскладка: :layout | HKL: :hkl",
+    "switching": "Переключение..."
+  }
+}

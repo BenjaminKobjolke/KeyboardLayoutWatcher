@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Lingua",
+    "block_completely": "Blocca completamente Win+Space",
+    "allow_multi_press": "Consenti Win+Space dopo aver premuto",
+    "times": "volte",
+    "show_alert": "Mostra avviso al cambio del layout",
+    "minimize_on_start": "Riduci a icona all'avvio",
+    "minimize_to_tray": "Riduci a icona nell'area di notifica",
+    "launch_on_startup": "Avvia all'avvio di Windows",
+    "restart_required": "Riavvia l'app per applicare la modifica della lingua."
+  },
+  "tray": {
+    "show": "Mostra",
+    "exit": "Esci"
+  },
+  "alert": {
+    "title": "Layout cambiato",
+    "message": "Il layout della tastiera è cambiato in:\\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Layout: :layout | Lingua: :language",
+    "layout_display_hkl": "Layout: :layout | HKL: :hkl",
+    "switching": "Cambio in corso..."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "زبان",
+    "block_completely": "Win+Space کو مکمل طور پر بلاک کریں",
+    "allow_multi_press": "Win+Space کو دبانے کے بعد اجازت دیں",
+    "times": "بار",
+    "show_alert": "لے آؤٹ تبدیل ہونے پر اطلاع دکھائیں",
+    "minimize_on_start": "شروع ہوتے ہی مائنی مائز کریں",
+    "minimize_to_tray": "سسٹم ٹرے میں چھپائیں",
+    "launch_on_startup": "ونڈوز شروع ہوتے ہی چلائیں",
+    "restart_required": "زبان کی تبدیلی کے اثر کے لیے ایپ کو دوبارہ شروع کریں۔"
+  },
+  "tray": {
+    "show": "کھولیں",
+    "exit": "بند کریں"
+  },
+  "alert": {
+    "title": "لے آؤٹ بدل گیا",
+    "message": "کی بورڈ لے آؤٹ تبدیل ہو گیا:\n:layout",
+    "ok": "ٹھیک ہے"
+  },
+  "status": {
+    "layout_display": "لے آؤٹ: :layout | زبان: :language",
+    "layout_display_hkl": "لے آؤٹ: :layout | HKL: :hkl",
+    "switching": "بدل رہا ہے..."
+  }
+}

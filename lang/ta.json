@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "மொழி",
+    "block_completely": "Win+Space-ஐ முழுமையாக தடை செய்",
+    "allow_multi_press": "அழுத்தியபின் Win+Space-ஐ அனுமதிக்கவும்",
+    "times": "முறை",
+    "show_alert": "லேஅவுட் மாற்றும்போது எச்சரிக்கை காட்டு",
+    "minimize_on_start": "தொடக்கத்தில் சுருக்கி வைக்கவும்",
+    "minimize_to_tray": "Tray-க்கு சுருக்கி வைக்கவும்",
+    "launch_on_startup": "Windows துவங்கும்போது தானாக தொடங்கவும்",
+    "restart_required": "மொழி மாற்றம் செயல்பட, செயலியை மறுதொடக்கவும்."
+  },
+  "tray": {
+    "show": "காட்டு",
+    "exit": "வெளியேறு"
+  },
+  "alert": {
+    "title": "லேஅவுட் மாற்றப்பட்டது",
+    "message": "கீபோர்டு அமைப்பு மாற்றப்பட்டது:\n:layout",
+    "ok": "சரி"
+  },
+  "status": {
+    "layout_display": "அமைப்பு: :layout | மொழி: :language",
+    "layout_display_hkl": "அமைப்பு: :layout | HKL: :hkl",
+    "switching": "மாற்றப்படுகிறது..."
+  }
+}

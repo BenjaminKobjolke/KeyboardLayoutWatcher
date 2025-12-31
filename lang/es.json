@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Idioma",
+    "block_completely": "Bloquear Win+Espacio completamente",
+    "allow_multi_press": "Permitir Win+Espacio tras pulsarlo",
+    "times": "veces",
+    "show_alert": "Mostrar alerta al cambiar la distribución del teclado",
+    "minimize_on_start": "Minimizar al iniciar",
+    "minimize_to_tray": "Minimizar a la bandeja",
+    "launch_on_startup": "Iniciar con Windows",
+    "restart_required": "Por favor, reinicia la aplicación para que el cambio de idioma surta efecto."
+  },
+  "tray": {
+    "show": "Mostrar",
+    "exit": "Salir"
+  },
+  "alert": {
+    "title": "Distribución cambiada",
+    "message": "La distribución del teclado ha cambiado a:\n:layout",
+    "ok": "Aceptar"
+  },
+  "status": {
+    "layout_display": "Distribución: :layout | Idioma: :language",
+    "layout_display_hkl": "Distribución: :layout | HKL: :hkl",
+    "switching": "Cambiando..."
+  }
+}

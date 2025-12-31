@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using CSharpLocalization;
 
 namespace KeyboardLayoutWatcher
 {
@@ -14,10 +15,12 @@ namespace KeyboardLayoutWatcher
         public event EventHandler ExitRequested;
 
         private Icon _icon;
+        private Localization _localization;
 
-        public TrayManager(Icon icon = null)
+        public TrayManager(Icon icon, Localization localization)
         {
             _icon = icon ?? SystemIcons.Application;
+            _localization = localization;
             CreateContextMenu();
             CreateTrayIcon();
         }
@@ -29,13 +32,13 @@ namespace KeyboardLayoutWatcher
             _contextMenu.ForeColor = Color.White;
             _contextMenu.Renderer = new DarkMenuRenderer();
 
-            var showItem = new ToolStripMenuItem("Show");
+            var showItem = new ToolStripMenuItem(_localization.Lang("tray.show"));
             showItem.Click += (s, e) => ShowRequested?.Invoke(this, EventArgs.Empty);
             _contextMenu.Items.Add(showItem);
 
             _contextMenu.Items.Add(new ToolStripSeparator());
 
-            var exitItem = new ToolStripMenuItem("Exit");
+            var exitItem = new ToolStripMenuItem(_localization.Lang("tray.exit"));
             exitItem.Click += (s, e) => ExitRequested?.Invoke(this, EventArgs.Empty);
             _contextMenu.Items.Add(exitItem);
         }
@@ -45,7 +48,7 @@ namespace KeyboardLayoutWatcher
             _trayIcon = new NotifyIcon
             {
                 Icon = _icon,
-                Text = "Keyboard Layout Watcher",
+                Text = _localization.Lang("app.title"),
                 ContextMenuStrip = _contextMenu,
                 Visible = true
             };
@@ -66,6 +69,19 @@ namespace KeyboardLayoutWatcher
             if (text.Length > 63)
                 text = text.Substring(0, 60) + "...";
             _trayIcon.Text = text;
+        }
+
+        public void RefreshLocalization()
+        {
+            // Update context menu items
+            if (_contextMenu.Items.Count > 0)
+            {
+                ((ToolStripMenuItem)_contextMenu.Items[0]).Text = _localization.Lang("tray.show");
+            }
+            if (_contextMenu.Items.Count > 2)
+            {
+                ((ToolStripMenuItem)_contextMenu.Items[2]).Text = _localization.Lang("tray.exit");
+            }
         }
 
         public void Dispose()

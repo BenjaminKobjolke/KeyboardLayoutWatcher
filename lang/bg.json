@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Език",
+    "block_completely": "Блокирай Win+Space напълно",
+    "allow_multi_press": "Позволи Win+Space след натискане",
+    "times": "пъти",
+    "show_alert": "Показвай уведомление при смяна на подредбата",
+    "minimize_on_start": "Минимизирай при стартиране",
+    "minimize_to_tray": "Минимизирай в системния трей",
+    "launch_on_startup": "Стартирай с Windows",
+    "restart_required": "Моля рестартирай приложението, за да влезе в сила промяната на езика."
+  },
+  "tray": {
+    "show": "Покажи",
+    "exit": "Изход"
+  },
+  "alert": {
+    "title": "Подредбата е сменена",
+    "message": "Клавиатурната подредба е сменена на:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Подредба: :layout | Език: :language",
+    "layout_display_hkl": "Подредба: :layout | HKL: :hkl",
+    "switching": "Превключване..."
+  }
+}

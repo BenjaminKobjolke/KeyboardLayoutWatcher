@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Język",
+    "block_completely": "Całkowicie blokuj Win+Space",
+    "allow_multi_press": "Pozwól na wielokrotne naciśnięcie Win+Space",
+    "times": "razy",
+    "show_alert": "Pokaż powiadomienie przy zmianie układu",
+    "minimize_on_start": "Minimalizuj przy uruchomieniu",
+    "minimize_to_tray": "Minimalizuj do zasobnika",
+    "launch_on_startup": "Uruchamiaj przy starcie Windows",
+    "restart_required": "Uruchom ponownie aplikację, aby zmiana języka została zastosowana."
+  },
+  "tray": {
+    "show": "Pokaż",
+    "exit": "Zakończ"
+  },
+  "alert": {
+    "title": "Zmieniono układ",
+    "message": "Zmieniono układ klawiatury na:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Układ: :layout | Język: :language",
+    "layout_display_hkl": "Układ: :layout | HKL: :hkl",
+    "switching": "Przełączanie..."
+  }
+}

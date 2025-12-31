@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "భాష",
+    "block_completely": "Win+Space ను పూర్తిగా బ్లాక్ చేయి",
+    "allow_multi_press": "Win+Space నొక్కిన తర్వాత అనుమతించు",
+    "times": "సార్లు",
+    "show_alert": "లేఅవుట్ మారినప్పుడు అలర్ట్ చూపించు",
+    "minimize_on_start": "ప్రారంభంలో మినిమైజ్ చేయి",
+    "minimize_to_tray": "ట్రేలో మినిమైజ్ చేయి",
+    "launch_on_startup": "Windows ప్రారంభమైనప్పుడు ఆటోగా ప్రారంభించు",
+    "restart_required": "భాష మార్పు వర్తించాలంటే యాప్‌ను రీస్టార్ట్ చేయి."
+  },
+  "tray": {
+    "show": "చూపించు",
+    "exit": "నిష్క్రమించు"
+  },
+  "alert": {
+    "title": "లేఅవుట్ మారింది",
+    "message": "కీబోర్డ్ లేఅవుట్ మారింది:\n:layout",
+    "ok": "సరే"
+  },
+  "status": {
+    "layout_display": "లేఅవుట్: :layout | భాష: :language",
+    "layout_display_hkl": "లేఅవుట్: :layout | HKL: :hkl",
+    "switching": "మారుతోంది..."
+  }
+}

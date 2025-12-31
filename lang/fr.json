@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Langue",
+    "block_completely": "Bloquer complètement Win+Space",
+    "allow_multi_press": "Autoriser Win+Space après appui",
+    "times": "fois",
+    "show_alert": "Afficher une alerte lors du changement de disposition du clavier",
+    "minimize_on_start": "Minimiser au démarrage",
+    "minimize_to_tray": "Minimiser dans la zone de notification",
+    "launch_on_startup": "Lancer au démarrage de Windows",
+    "restart_required": "Veuillez redémarrer l'application pour que le changement de langue soit pris en compte."
+  },
+  "tray": {
+    "show": "Afficher",
+    "exit": "Quitter"
+  },
+  "alert": {
+    "title": "Disposition modifiée",
+    "message": "Disposition du clavier changée :\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Disposition : :layout | Langue : :language",
+    "layout_display_hkl": "Disposition : :layout | HKL : :hkl",
+    "switching": "Changement en cours..."
+  }
+}

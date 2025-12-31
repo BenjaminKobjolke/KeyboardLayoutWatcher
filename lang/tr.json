@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Dil",
+    "block_completely": "Win+Space'i tamamen engelle",
+    "allow_multi_press": "Belirtilen sayıda basıştan sonra Win+Space'e izin ver",
+    "times": "defa",
+    "show_alert": "Klavye düzeni değiştiğinde uyarı göster",
+    "minimize_on_start": "Başlangıçta simge durumuna küçült",
+    "minimize_to_tray": "Sistem tepsisine küçült",
+    "launch_on_startup": "Windows açılışında başlat",
+    "restart_required": "Dil değişikliğinin uygulanması için lütfen uygulamayı yeniden başlatın."
+  },
+  "tray": {
+    "show": "Göster",
+    "exit": "Çıkış"
+  },
+  "alert": {
+    "title": "Düzen değişti",
+    "message": "Klavye düzeni değişti:\n:layout",
+    "ok": "Tamam"
+  },
+  "status": {
+    "layout_display": "Düzen: :layout | Dil: :language",
+    "layout_display_hkl": "Düzen: :layout | HKL: :hkl",
+    "switching": "Değiştiriliyor..."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Ngôn ngữ",
+    "block_completely": "Chặn hoàn toàn Win+Space",
+    "allow_multi_press": "Cho phép Win+Space sau khi nhấn",
+    "times": "lần",
+    "show_alert": "Hiện thông báo khi đổi bố cục",
+    "minimize_on_start": "Thu nhỏ khi khởi động",
+    "minimize_to_tray": "Thu nhỏ vào khay",
+    "launch_on_startup": "Chạy khi Windows khởi động",
+    "restart_required": "Vui lòng khởi động lại ứng dụng để thay đổi ngôn ngữ có hiệu lực."
+  },
+  "tray": {
+    "show": "Hiện",
+    "exit": "Thoát"
+  },
+  "alert": {
+    "title": "Đã đổi bố cục",
+    "message": "Bố cục bàn phím đã đổi thành:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Bố cục: :layout | Ngôn ngữ: :language",
+    "layout_display_hkl": "Bố cục: :layout | HKL: :hkl",
+    "switching": "Đang chuyển..."
+  }
+}

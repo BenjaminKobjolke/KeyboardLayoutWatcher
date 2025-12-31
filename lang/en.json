@@ -1,0 +1,36 @@
+{
+    "_meta_": {
+        "language_name": "English"
+    },
+    "_hint_": "Desktop app UI strings. Use context-appropriate translations.",
+    "_hint_2_": "Keyboard Layout Watcher is the app name - do not translate.",
+    "_hint_3_": "Use informal language (Du not Sie in German).",
+    "app": {
+        "title": "Keyboard Layout Watcher"
+    },
+    "settings": {
+        "language": "Language",
+        "block_completely": "Block Win+Space completely",
+        "allow_multi_press": "Allow Win+Space after pressing",
+        "times": "times",
+        "show_alert": "Show alert on layout change",
+        "minimize_on_start": "Minimize on start",
+        "minimize_to_tray": "Minimize to tray",
+        "launch_on_startup": "Launch on Windows startup",
+        "restart_required": "Please restart the application for the language change to take effect."
+    },
+    "tray": {
+        "show": "Show",
+        "exit": "Exit"
+    },
+    "alert": {
+        "title": "Layout Changed",
+        "message": "Keyboard layout changed to:\n:layout",
+        "ok": "OK"
+    },
+    "status": {
+        "layout_display": "Layout: :layout | Lang: :language",
+        "layout_display_hkl": "Layout: :layout | HKL: :hkl",
+        "switching": "Switching..."
+    }
+}

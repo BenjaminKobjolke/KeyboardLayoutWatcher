@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Kieli",
+    "block_completely": "Estä Win+Space kokonaan",
+    "allow_multi_press": "Salli Win+Space painamisen jälkeen",
+    "times": "kertaa",
+    "show_alert": "Näytä ilmoitus asettelun vaihtuessa",
+    "minimize_on_start": "Pienennä käynnistyessä",
+    "minimize_to_tray": "Pienennä ilmoitusalueelle",
+    "launch_on_startup": "Käynnistä Windowsin käynnistyessä",
+    "restart_required": "Käynnistä sovellus uudelleen, jotta kielimuutos tulee voimaan."
+  },
+  "tray": {
+    "show": "Näytä",
+    "exit": "Poistu"
+  },
+  "alert": {
+    "title": "Asettelu vaihdettu",
+    "message": "Näppäimistön asettelu vaihtui:\\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Asettelu: :layout | Kieli: :language",
+    "layout_display_hkl": "Asettelu: :layout | HKL: :hkl",
+    "switching": "Vaihdetaan..."
+  }
+}

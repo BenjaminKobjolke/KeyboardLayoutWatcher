@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "שפה",
+    "block_completely": "חסום לחלוטין את Win+Space",
+    "allow_multi_press": "לאפשר Win+Space לאחר לחיצה",
+    "times": "פעמים",
+    "show_alert": "הצג התראה בעת שינוי פריסה",
+    "minimize_on_start": "מזער בהפעלה",
+    "minimize_to_tray": "מזער למגש המערכת",
+    "launch_on_startup": "הפעל בהפעלה של Windows",
+    "restart_required": "אנא הפעל מחדש את היישום כדי שהשינוי בשפה ייכנס לתוקף."
+  },
+  "tray": {
+    "show": "הצג",
+    "exit": "צא"
+  },
+  "alert": {
+    "title": "הפריסה שונתה",
+    "message": "פריסת המקלדת שונתה ל:\n:layout",
+    "ok": "אישור"
+  },
+  "status": {
+    "layout_display": "פריסה: :layout | שפה: :language",
+    "layout_display_hkl": "פריסה: :layout | HKL: :hkl",
+    "switching": "מעבר..."
+  }
+}

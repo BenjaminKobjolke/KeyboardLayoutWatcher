@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "اللغة",
+    "block_completely": "حظر Win+Space تمامًا",
+    "allow_multi_press": "السماح بـ Win+Space بعد الضغط",
+    "times": "مرات",
+    "show_alert": "إظهار تنبيه عند تغيير التخطيط",
+    "minimize_on_start": "التصغير عند التشغيل",
+    "minimize_to_tray": "التصغير إلى علبة النظام",
+    "launch_on_startup": "التشغيل عند بدء تشغيل ويندوز",
+    "restart_required": "يرجى إعادة تشغيل التطبيق لتفعيل تغيير اللغة."
+  },
+  "tray": {
+    "show": "إظهار",
+    "exit": "خروج"
+  },
+  "alert": {
+    "title": "تم تغيير التخطيط",
+    "message": "تم تغيير تخطيط لوحة المفاتيح إلى:\\n:layout",
+    "ok": "موافق"
+  },
+  "status": {
+    "layout_display": "التخطيط: :layout | اللغة: :language",
+    "layout_display_hkl": "التخطيط: :layout | HKL: :hkl",
+    "switching": "جاري التبديل..."
+  }
+}

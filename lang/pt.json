@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Idioma",
+    "block_completely": "Bloquear Win+Space completamente",
+    "allow_multi_press": "Permitir Win+Space após pressionar",
+    "times": "vezes",
+    "show_alert": "Mostrar alerta quando o layout mudar",
+    "minimize_on_start": "Minimizar ao iniciar",
+    "minimize_to_tray": "Minimizar para a bandeja",
+    "launch_on_startup": "Iniciar com o Windows",
+    "restart_required": "Reinicie o aplicativo para que a alteração de idioma tenha efeito."
+  },
+  "tray": {
+    "show": "Mostrar",
+    "exit": "Sair"
+  },
+  "alert": {
+    "title": "Layout alterado",
+    "message": "Layout do teclado alterado para:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Layout: :layout | Idioma: :language",
+    "layout_display_hkl": "Layout: :layout | HKL: :hkl",
+    "switching": "Trocando..."
+  }
+}

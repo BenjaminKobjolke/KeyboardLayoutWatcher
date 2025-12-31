@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "भाषा",
+    "block_completely": "Win+Space पूर्णपणे अवरोधित करा",
+    "allow_multi_press": "दाबल्यानंतर Win+Space ला परवानगी द्या",
+    "times": "वेळा",
+    "show_alert": "लेआउट बदलल्यावर सूचना दाखवा",
+    "minimize_on_start": "सुरुवातीला मिनिमाइझ करा",
+    "minimize_to_tray": "ट्रे मध्ये मिनिमाइझ करा",
+    "launch_on_startup": "Windows सुरू होताच अॅप सुरू करा",
+    "restart_required": "भाषा बदल प्रभावी होण्यासाठी कृपया अॅप पुन्हा सुरू करा."
+  },
+  "tray": {
+    "show": "दाखवा",
+    "exit": "बाहेर पडा"
+  },
+  "alert": {
+    "title": "लेआउट बदलला",
+    "message": "कीबोर्ड लेआउट बदलला:\n:layout",
+    "ok": "ठीक आहे"
+  },
+  "status": {
+    "layout_display": "लेआउट: :layout | भाषा: :language",
+    "layout_display_hkl": "लेआउट: :layout | HKL: :hkl",
+    "switching": "स्विच करत आहे..."
+  }
+}

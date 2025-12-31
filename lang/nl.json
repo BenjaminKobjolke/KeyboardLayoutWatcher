@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Taal",
+    "block_completely": "Blokkeer Win+Space volledig",
+    "allow_multi_press": "Sta Win+Space toe na het indrukken van",
+    "times": "keer",
+    "show_alert": "Toon melding bij wijziging van toetsenbordindeling",
+    "minimize_on_start": "Minimaliseer bij opstarten",
+    "minimize_to_tray": "Minimaliseer naar systeemvak",
+    "launch_on_startup": "Start bij het opstarten van Windows",
+    "restart_required": "Start de applicatie opnieuw om de taalwijziging door te voeren."
+  },
+  "tray": {
+    "show": "Toon",
+    "exit": "Afsluiten"
+  },
+  "alert": {
+    "title": "Toetsenbordindeling gewijzigd",
+    "message": "Toetsenbordindeling gewijzigd naar:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Indeling: :layout | Taal: :language",
+    "layout_display_hkl": "Indeling: :layout | HKL: :hkl",
+    "switching": "Wisselen..."
+  }
+}

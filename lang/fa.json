@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "زبان",
+    "block_completely": "Win+Space را به‌طور کامل مسدود کن",
+    "allow_multi_press": "اجازهٔ استفاده از Win+Space پس از فشردن",
+    "times": "بار",
+    "show_alert": "نمایش هشدار هنگام تغییر چیدمان",
+    "minimize_on_start": "کوچک‌شدن در هنگام اجرا",
+    "minimize_to_tray": "کوچک‌شدن در سینی سیستم",
+    "launch_on_startup": "اجرای برنامه هنگام راه‌اندازی ویندوز",
+    "restart_required": "برای اعمال تغییر زبان، لطفاً برنامه را دوباره راه‌اندازی کن."
+  },
+  "tray": {
+    "show": "نمایش",
+    "exit": "خروج"
+  },
+  "alert": {
+    "title": "چیدمان صفحه‌کلید تغییر کرد",
+    "message": "چیدمان صفحه‌کلید تغییر کرد به:\n:layout",
+    "ok": "باشه"
+  },
+  "status": {
+    "layout_display": "چیدمان: :layout | زبان: :language",
+    "layout_display_hkl": "چیدمان: :layout | HKL: :hkl",
+    "switching": "در حال تغییر..."
+  }
+}

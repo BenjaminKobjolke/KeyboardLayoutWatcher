@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Keel",
+    "block_completely": "Blokeeri Win+Space täielikult",
+    "allow_multi_press": "Luba Win+Space pärast vajutamist",
+    "times": "korda",
+    "show_alert": "Näita teadet paigutuse muutumisel",
+    "minimize_on_start": "Minimeeri käivitamisel",
+    "minimize_to_tray": "Minimeeri süsteemsesse salve",
+    "launch_on_startup": "Käivita Windowsi käivitumisel",
+    "restart_required": "Palun taaskäivita rakendus, et keelemuutus jõustuks."
+  },
+  "tray": {
+    "show": "Näita",
+    "exit": "Välju"
+  },
+  "alert": {
+    "title": "Paigutus muutus",
+    "message": "Klahvipaigutus muutus:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Paigutus: :layout | Keel: :language",
+    "layout_display_hkl": "Paigutus: :layout | HKL: :hkl",
+    "switching": "Vahetan..."
+  }
+}

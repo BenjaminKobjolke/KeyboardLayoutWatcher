@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using CSharpLocalization;
 
 namespace KeyboardLayoutWatcher
 {
@@ -75,25 +78,41 @@ namespace KeyboardLayoutWatcher
         private CheckBox _chkMinimizeOnStart;
         private CheckBox _chkMinimizeToTray;
         private CheckBox _chkLaunchOnStartup;
+        private Label _lblLanguage;
+        private ComboBox _cmbLanguage;
         private ToolTip _statusToolTip;
         private Timer _tooltipTimer;
         private bool _isLoading = true;
         private bool _isRestoring = false;
+        private Localization _localization;
 
         public Form1()
         {
             InitializeComponent();
+            InitializeLocalization();
             InitializeUI();
             InitializeComponents();
             LoadSettings();
             ApplyStartupBehavior();
         }
 
+        private void InitializeLocalization()
+        {
+            _localization = new Localization(new LocalizationConfig
+            {
+                UseEmbeddedResources = true,
+                ResourceAssembly = Assembly.GetExecutingAssembly(),
+                ResourcePrefix = "KeyboardLayoutWatcher.lang.",
+                DefaultLang = AppSettings.Instance.Language,  // null = auto-detect
+                FallbackLang = "en"
+            });
+        }
+
         private void InitializeUI()
         {
-            this.Text = "Keyboard Layout Watcher";
+            this.Text = _localization.Lang("app.title");
             this.Width = 400;
-            this.Height = 276;
+            this.Height = 310;  // Increased height for language dropdown
 
             // Load application icon from embedded resource
             this.Icon = Properties.Resources.icon;
@@ -128,7 +147,7 @@ namespace KeyboardLayoutWatcher
 
             _rbBlockCompletely = new RadioButton
             {
-                Text = "Block Win+Space completely",
+                Text = _localization.Lang("settings.block_completely"),
                 Location = new Point(15, yPos),
                 Size = new Size(360, 24),
                 Font = new Font("Segoe UI", 10),
@@ -142,7 +161,7 @@ namespace KeyboardLayoutWatcher
 
             _rbAllowMultiPress = new RadioButton
             {
-                Text = "Allow Win+Space after pressing",
+                Text = _localization.Lang("settings.allow_multi_press"),
                 Location = new Point(15, yPos),
                 Size = new Size(230, 24),
                 Font = new Font("Segoe UI", 10),
@@ -169,7 +188,7 @@ namespace KeyboardLayoutWatcher
 
             _lblTimes = new Label
             {
-                Text = "times",
+                Text = _localization.Lang("settings.times"),
                 Location = new Point(300, yPos + 2),
                 Size = new Size(50, 24),
                 Font = new Font("Segoe UI", 10),
@@ -180,16 +199,49 @@ namespace KeyboardLayoutWatcher
             yPos += spacing;
 
             // Other checkboxes
-            _chkShowAlert = CreateCheckBox("Show alert on layout change", yPos);
+            _chkShowAlert = CreateCheckBox(_localization.Lang("settings.show_alert"), yPos);
             yPos += spacing;
 
-            _chkMinimizeOnStart = CreateCheckBox("Minimize on start", yPos);
+            _chkMinimizeOnStart = CreateCheckBox(_localization.Lang("settings.minimize_on_start"), yPos);
             yPos += spacing;
 
-            _chkMinimizeToTray = CreateCheckBox("Minimize to tray", yPos);
+            _chkMinimizeToTray = CreateCheckBox(_localization.Lang("settings.minimize_to_tray"), yPos);
             yPos += spacing;
 
-            _chkLaunchOnStartup = CreateCheckBox("Launch on Windows startup", yPos);
+            _chkLaunchOnStartup = CreateCheckBox(_localization.Lang("settings.launch_on_startup"), yPos);
+            yPos += spacing;
+
+            // Language selection
+            _lblLanguage = new Label
+            {
+                Text = _localization.Lang("settings.language"),
+                Location = new Point(15, yPos + 2),
+                Size = new Size(80, 24),
+                Font = new Font("Segoe UI", 10),
+                ForeColor = Color.White,
+                BackColor = Color.FromArgb(30, 30, 30)
+            };
+            this.Controls.Add(_lblLanguage);
+
+            _cmbLanguage = new ComboBox
+            {
+                Location = new Point(100, yPos),
+                Size = new Size(150, 24),
+                Font = new Font("Segoe UI", 10),
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                BackColor = Color.FromArgb(50, 50, 50),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            _cmbLanguage.SelectedIndexChanged += CmbLanguage_SelectedIndexChanged;
+
+            // Populate language dropdown
+            var languages = _localization.GetAvailableLanguages();
+            _cmbLanguage.DataSource = languages;
+            _cmbLanguage.DisplayMember = "Name";
+            _cmbLanguage.ValueMember = "Code";
+
+            this.Controls.Add(_cmbLanguage);
 
             // Status tooltip
             _statusToolTip = new ToolTip
@@ -228,12 +280,12 @@ namespace KeyboardLayoutWatcher
         private void InitializeComponents()
         {
             // Initialize keyboard hook
-            _keyboardHook = new KeyboardHook();
+            _keyboardHook = new KeyboardHook(_localization);
             _keyboardHook.StatusChanged += KeyboardHook_StatusChanged;
             _keyboardHook.Install();
 
             // Initialize tray manager
-            _trayManager = new TrayManager(this.Icon);
+            _trayManager = new TrayManager(this.Icon, _localization);
             _trayManager.ShowRequested += (s, e) =>
             {
                 Log("ShowRequested event fired");
@@ -271,6 +323,17 @@ namespace KeyboardLayoutWatcher
             _chkMinimizeOnStart.Checked = settings.MinimizeOnStart;
             _chkMinimizeToTray.Checked = settings.MinimizeToTray;
             _chkLaunchOnStartup.Checked = IsStartupEnabled();
+
+            // Set language dropdown selection
+            foreach (var item in _cmbLanguage.Items)
+            {
+                var langInfo = item as LanguageInfo;
+                if (langInfo != null && langInfo.Code == _localization.CurrentLanguage)
+                {
+                    _cmbLanguage.SelectedItem = item;
+                    break;
+                }
+            }
 
             _keyboardHook.BlockCompletely = settings.WinSpaceBlockCompletely;
             _keyboardHook.RequiredPressCount = settings.WinSpacePressCount;
@@ -358,6 +421,45 @@ namespace KeyboardLayoutWatcher
             _keyboardHook.RequiredPressCount = settings.WinSpacePressCount;
         }
 
+        private void CmbLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_isLoading) return;
+
+            var selectedLanguage = _cmbLanguage.SelectedItem as LanguageInfo;
+            if (selectedLanguage != null && selectedLanguage.Code != _localization.CurrentLanguage)
+            {
+                AppSettings.Instance.Language = selectedLanguage.Code;
+                AppSettings.Instance.Save();
+
+                // Switch language and refresh UI immediately
+                _localization.SetLanguage(selectedLanguage.Code);
+                RefreshLocalizedUI();
+            }
+        }
+
+        private void RefreshLocalizedUI()
+        {
+            // Window title
+            this.Text = _localization.Lang("app.title");
+
+            // Radio buttons
+            _rbBlockCompletely.Text = _localization.Lang("settings.block_completely");
+            _rbAllowMultiPress.Text = _localization.Lang("settings.allow_multi_press");
+
+            // Labels
+            _lblTimes.Text = _localization.Lang("settings.times");
+            _lblLanguage.Text = _localization.Lang("settings.language");
+
+            // Checkboxes
+            _chkShowAlert.Text = _localization.Lang("settings.show_alert");
+            _chkMinimizeOnStart.Text = _localization.Lang("settings.minimize_on_start");
+            _chkMinimizeToTray.Text = _localization.Lang("settings.minimize_to_tray");
+            _chkLaunchOnStartup.Text = _localization.Lang("settings.launch_on_startup");
+
+            // Tray manager
+            _trayManager?.RefreshLocalization();
+        }
+
         private void KeyboardHook_StatusChanged(object sender, string status)
         {
             if (this.InvokeRequired)
@@ -410,11 +512,19 @@ namespace KeyboardLayoutWatcher
             string text;
             if (culture != null)
             {
-                text = $"Layout: {keyboardLayoutName} | Lang: {culture.DisplayName}";
+                text = _localization.Lang("status.layout_display", new Dictionary<string, string>
+                {
+                    { ":layout", keyboardLayoutName },
+                    { ":language", culture.DisplayName }
+                });
             }
             else
             {
-                text = $"Layout: {keyboardLayoutName} | HKL: 0x{layout.ToInt64():X}";
+                text = _localization.Lang("status.layout_display_hkl", new Dictionary<string, string>
+                {
+                    { ":layout", keyboardLayoutName },
+                    { ":hkl", $"0x{layout.ToInt64():X}" }
+                });
             }
 
             _layoutLabel.Text = text;
@@ -438,7 +548,7 @@ namespace KeyboardLayoutWatcher
 
             _currentAlert = new Form
             {
-                Text = "Layout Changed",
+                Text = _localization.Lang("alert.title"),
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 StartPosition = FormStartPosition.CenterScreen,
                 Size = new Size(300, 150),
@@ -449,9 +559,14 @@ namespace KeyboardLayoutWatcher
                 BackColor = Color.FromArgb(30, 30, 30)
             };
 
+            var alertMessage = _localization.Lang("alert.message", new Dictionary<string, string>
+            {
+                { ":layout", layoutName }
+            });
+
             var label = new Label
             {
-                Text = $"Keyboard layout changed to:\n{layoutName}",
+                Text = alertMessage,
                 Dock = DockStyle.Fill,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Segoe UI", 12),
@@ -462,7 +577,7 @@ namespace KeyboardLayoutWatcher
 
             var okButton = new Button
             {
-                Text = "OK",
+                Text = _localization.Lang("alert.ok"),
                 Size = new Size(75, 30),
                 Location = new Point(112, 80),
                 FlatStyle = FlatStyle.Flat,

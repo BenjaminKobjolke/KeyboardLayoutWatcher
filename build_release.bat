@@ -47,7 +47,7 @@ echo.
 if %ERRORLEVEL% EQU 0 (
     echo.
     echo Build successful!
-    echo Output: KeyboardLayoutWatcher\bin\Release\KeyboardLayoutWatcher.exe
+    echo Output: bin\Release\KeyboardLayoutWatcher.exe
 ) else (
     echo.
     echo Build failed!

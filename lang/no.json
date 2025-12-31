@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Keyboard Layout Watcher"
+  },
+  "settings": {
+    "language": "Språk",
+    "block_completely": "Blokker Win+Space helt",
+    "allow_multi_press": "Tillat Win+Space etter å ha trykket",
+    "times": "ganger",
+    "show_alert": "Vis varsel ved bytte av tastaturoppsett",
+    "minimize_on_start": "Minimer ved oppstart",
+    "minimize_to_tray": "Minimer til systemfeltet",
+    "launch_on_startup": "Start ved oppstart av Windows",
+    "restart_required": "Start appen på nytt for at språkendringen skal tre i kraft."
+  },
+  "tray": {
+    "show": "Vis",
+    "exit": "Avslutt"
+  },
+  "alert": {
+    "title": "Tastaturoppsett endret",
+    "message": "Tastaturoppsett endret til:\n:layout",
+    "ok": "OK"
+  },
+  "status": {
+    "layout_display": "Oppsett: :layout | Språk: :language",
+    "layout_display_hkl": "Oppsett: :layout | HKL: :hkl",
+    "switching": "Bytter..."
+  }
+}
