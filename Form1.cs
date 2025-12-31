@@ -85,6 +85,7 @@ namespace KeyboardLayoutWatcher
         private bool _isLoading = true;
         private bool _isRestoring = false;
         private Localization _localization;
+        private string _pendingLanguageSelection;
 
         public Form1()
         {
@@ -94,6 +95,7 @@ namespace KeyboardLayoutWatcher
             InitializeComponents();
             LoadSettings();
             ApplyStartupBehavior();
+            this.Shown += Form1_Shown;
         }
 
         private void InitializeLocalization()
@@ -233,13 +235,13 @@ namespace KeyboardLayoutWatcher
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat
             };
-            _cmbLanguage.SelectedIndexChanged += CmbLanguage_SelectedIndexChanged;
+            // NOTE: Event handler attached in LoadSettings() AFTER initial selection is set
 
-            // Populate language dropdown
+            // Populate language dropdown - set DisplayMember/ValueMember BEFORE DataSource
             var languages = _localization.GetAvailableLanguages();
-            _cmbLanguage.DataSource = languages;
             _cmbLanguage.DisplayMember = "Name";
             _cmbLanguage.ValueMember = "Code";
+            _cmbLanguage.DataSource = languages;
 
             this.Controls.Add(_cmbLanguage);
 
@@ -324,16 +326,8 @@ namespace KeyboardLayoutWatcher
             _chkMinimizeToTray.Checked = settings.MinimizeToTray;
             _chkLaunchOnStartup.Checked = IsStartupEnabled();
 
-            // Set language dropdown selection
-            foreach (var item in _cmbLanguage.Items)
-            {
-                var langInfo = item as LanguageInfo;
-                if (langInfo != null && langInfo.Code == _localization.CurrentLanguage)
-                {
-                    _cmbLanguage.SelectedItem = item;
-                    break;
-                }
-            }
+            // Store language for selection in Form_Shown (ComboBox not ready during constructor)
+            _pendingLanguageSelection = AppSettings.Instance.Language ?? _localization.CurrentLanguage;
 
             _keyboardHook.BlockCompletely = settings.WinSpaceBlockCompletely;
             _keyboardHook.RequiredPressCount = settings.WinSpacePressCount;
@@ -351,6 +345,29 @@ namespace KeyboardLayoutWatcher
                     this.Hide();
                 }
             }
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            // Set language dropdown selection (ComboBox is now ready)
+            if (!string.IsNullOrEmpty(_pendingLanguageSelection))
+            {
+                var languages = _cmbLanguage.DataSource as System.Collections.IList;
+                if (languages != null)
+                {
+                    for (int i = 0; i < languages.Count; i++)
+                    {
+                        dynamic lang = languages[i];
+                        if (lang != null && lang.Code == _pendingLanguageSelection)
+                        {
+                            _cmbLanguage.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+            }
+            // Attach event handler AFTER selection is set
+            _cmbLanguage.SelectedIndexChanged += CmbLanguage_SelectedIndexChanged;
         }
 
         private const string StartupRegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Run";
@@ -458,6 +475,9 @@ namespace KeyboardLayoutWatcher
 
             // Tray manager
             _trayManager?.RefreshLocalization();
+
+            // Force refresh of layout display with new language
+            _lastLayout = IntPtr.Zero;
         }
 
         private void KeyboardHook_StatusChanged(object sender, string status)
