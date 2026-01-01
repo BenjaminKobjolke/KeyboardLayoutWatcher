@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using CSharpLocalization;
+using KeyboardLayoutWatcher.Config;
 
 namespace KeyboardLayoutWatcher
 {
@@ -25,6 +26,7 @@ namespace KeyboardLayoutWatcher
 
         // Windows message constants
         private const int WM_INPUTLANGCHANGE = 0x0051;
+        private const int WM_SETTINGCHANGE = 0x001A;
 
         // Common keyboard layout identifiers
         private static readonly Dictionary<string, string> KeyboardLayoutNames = new Dictionary<string, string>
@@ -118,7 +120,7 @@ namespace KeyboardLayoutWatcher
             this.Height = 340;  // Increased height for link
 
             // Load application icon from embedded resource
-            this.Icon = Properties.Resources.icon;
+            this.Icon = Properties.Resources.icon_dark;
             this.BackColor = Color.FromArgb(30, 30, 30);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -260,7 +262,7 @@ namespace KeyboardLayoutWatcher
                 BackColor = Color.FromArgb(30, 30, 30),
                 LinkBehavior = LinkBehavior.AlwaysUnderline
             };
-            _lnkMoreTools.LinkClicked += (s, args) => System.Diagnostics.Process.Start("https://www.workflow-tools.com/keyboard-layout-watcher/app-link");
+            _lnkMoreTools.LinkClicked += (s, args) => System.Diagnostics.Process.Start(Constants.MoreToolsUrl);
             this.Controls.Add(_lnkMoreTools);
 
             // Status tooltip
@@ -312,6 +314,7 @@ namespace KeyboardLayoutWatcher
                 RestoreFromTray();
             };
             _trayManager.ExitRequested += (s, e) => Application.Exit();
+            UpdateTrayIconForTheme();
 
             // Timer for layout polling
             _timer = new Timer { Interval = 200 };
@@ -388,30 +391,28 @@ namespace KeyboardLayoutWatcher
             _cmbLanguage.SelectedIndexChanged += CmbLanguage_SelectedIndexChanged;
         }
 
-        private const string StartupRegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Run";
-        private const string StartupValueName = "KeyboardLayoutWatcher";
 
         private bool IsStartupEnabled()
         {
-            using (var key = Registry.CurrentUser.OpenSubKey(StartupRegistryKey, false))
+            using (var key = Registry.CurrentUser.OpenSubKey(Constants.StartupRegistryKey, false))
             {
-                return key?.GetValue(StartupValueName) != null;
+                return key?.GetValue(Constants.StartupValueName) != null;
             }
         }
 
         private void SetStartupEnabled(bool enable)
         {
-            using (var key = Registry.CurrentUser.OpenSubKey(StartupRegistryKey, true))
+            using (var key = Registry.CurrentUser.OpenSubKey(Constants.StartupRegistryKey, true))
             {
                 if (key == null) return;
 
                 if (enable)
                 {
-                    key.SetValue(StartupValueName, Application.ExecutablePath);
+                    key.SetValue(Constants.StartupValueName, Application.ExecutablePath);
                 }
                 else
                 {
-                    key.DeleteValue(StartupValueName, false);
+                    key.DeleteValue(Constants.StartupValueName, false);
                 }
             }
         }
@@ -454,6 +455,32 @@ namespace KeyboardLayoutWatcher
             settings.Save();
 
             _keyboardHook.RequiredPressCount = settings.WinSpacePressCount;
+        }
+
+        private bool IsWindowsUsingLightTheme()
+        {
+            try
+            {
+                using (var key = Registry.CurrentUser.OpenSubKey(
+                    @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", false))
+                {
+                    var value = key?.GetValue("AppsUseLightTheme");
+                    return value != null && (int)value == 1;
+                }
+            }
+            catch
+            {
+                return true; // Default to light theme (dark icon) if detection fails
+            }
+        }
+
+        private void UpdateTrayIconForTheme()
+        {
+            bool isLightTheme = IsWindowsUsingLightTheme();
+            // Light theme = light taskbar background (use dark icon)
+            // Dark theme = dark taskbar background (use light icon)
+            Icon iconToUse = isLightTheme ? Properties.Resources.icon_dark : Properties.Resources.icon_light;
+            _trayManager?.UpdateIcon(iconToUse);
         }
 
         private void CmbLanguage_SelectedIndexChanged(object sender, EventArgs e)
@@ -647,6 +674,11 @@ namespace KeyboardLayoutWatcher
             {
                 IntPtr newLayout = m.LParam;
                 UpdateLayoutDisplay(newLayout);
+            }
+            else if (m.Msg == WM_SETTINGCHANGE)
+            {
+                // Theme may have changed
+                UpdateTrayIconForTheme();
             }
 
             base.WndProc(ref m);

@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using CSharpLocalization;
+using KeyboardLayoutWatcher.Config;
 
 namespace KeyboardLayoutWatcher
 {
@@ -37,7 +38,7 @@ namespace KeyboardLayoutWatcher
             _contextMenu.Items.Add(showItem);
 
             var moreToolsItem = new ToolStripMenuItem(_localization.Lang("tray.more_tools"));
-            moreToolsItem.Click += (s, e) => System.Diagnostics.Process.Start("https://www.workflow-tools.com/keyboard-layout-watcher/app-link");
+            moreToolsItem.Click += (s, e) => System.Diagnostics.Process.Start(Constants.MoreToolsUrl);
             _contextMenu.Items.Add(moreToolsItem);
 
             _contextMenu.Items.Add(new ToolStripSeparator());
@@ -65,6 +66,14 @@ namespace KeyboardLayoutWatcher
             _trayIcon.BalloonTipTitle = title;
             _trayIcon.BalloonTipText = text;
             _trayIcon.ShowBalloonTip(timeout);
+        }
+
+        public void UpdateIcon(Icon icon)
+        {
+            if (icon != null && _trayIcon != null)
+            {
+                _trayIcon.Icon = icon;
+            }
         }
 
         public void UpdateTooltip(string text)
