@@ -119,9 +119,8 @@ namespace KeyboardLayoutWatcher
             this.Width = 400;
             this.Height = 340;  // Increased height for link
 
-            // Load application icon from embedded resource
-            this.Icon = Properties.Resources.icon_dark;
-            this.BackColor = Color.FromArgb(30, 30, 30);
+            // Window icon is set in InitializeComponents() based on theme
+            this.BackColor = ThemeColors.DarkBackground;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
 
@@ -131,9 +130,9 @@ namespace KeyboardLayoutWatcher
                 Location = new Point(15, 10),
                 Size = new Size(370, 30),
                 TextAlign = ContentAlignment.MiddleLeft,
-                Font = new Font("Segoe UI", 12),
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30, 30, 30)
+                Font = ThemeFonts.Heading,
+                ForeColor = ThemeColors.TextPrimary,
+                BackColor = ThemeColors.DarkBackground
             };
             this.Controls.Add(_layoutLabel);
 
@@ -142,7 +141,7 @@ namespace KeyboardLayoutWatcher
             {
                 Location = new Point(10, 45),
                 Size = new Size(370, 1),
-                BackColor = Color.FromArgb(60, 60, 60)
+                BackColor = ThemeColors.Separator
             };
             this.Controls.Add(separator);
 
@@ -155,9 +154,9 @@ namespace KeyboardLayoutWatcher
                 Text = _localization.Lang("settings.block_completely"),
                 Location = new Point(15, yPos),
                 Size = new Size(360, 24),
-                Font = new Font("Segoe UI", 10),
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30, 30, 30),
+                Font = ThemeFonts.Normal,
+                ForeColor = ThemeColors.TextPrimary,
+                BackColor = ThemeColors.DarkBackground,
                 FlatStyle = FlatStyle.Flat
             };
             _rbBlockCompletely.CheckedChanged += RadioButton_CheckedChanged;
@@ -169,9 +168,9 @@ namespace KeyboardLayoutWatcher
                 Text = _localization.Lang("settings.allow_multi_press"),
                 Location = new Point(15, yPos),
                 Size = new Size(230, 24),
-                Font = new Font("Segoe UI", 10),
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30, 30, 30),
+                Font = ThemeFonts.Normal,
+                ForeColor = ThemeColors.TextPrimary,
+                BackColor = ThemeColors.DarkBackground,
                 FlatStyle = FlatStyle.Flat
             };
             _rbAllowMultiPress.CheckedChanged += RadioButton_CheckedChanged;
@@ -184,9 +183,9 @@ namespace KeyboardLayoutWatcher
                 Minimum = 2,
                 Maximum = 5,
                 Value = 3,
-                Font = new Font("Segoe UI", 10),
-                BackColor = Color.FromArgb(50, 50, 50),
-                ForeColor = Color.White
+                Font = ThemeFonts.Normal,
+                BackColor = ThemeColors.MenuBackground,
+                ForeColor = ThemeColors.TextPrimary
             };
             _nudPressCount.ValueChanged += NudPressCount_ValueChanged;
             this.Controls.Add(_nudPressCount);
@@ -196,9 +195,9 @@ namespace KeyboardLayoutWatcher
                 Text = _localization.Lang("settings.times"),
                 Location = new Point(300, yPos + 2),
                 Size = new Size(50, 24),
-                Font = new Font("Segoe UI", 10),
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30, 30, 30)
+                Font = ThemeFonts.Normal,
+                ForeColor = ThemeColors.TextPrimary,
+                BackColor = ThemeColors.DarkBackground
             };
             this.Controls.Add(_lblTimes);
             yPos += spacing;
@@ -222,9 +221,9 @@ namespace KeyboardLayoutWatcher
                 Text = _localization.Lang("settings.language"),
                 Location = new Point(15, yPos + 2),
                 Size = new Size(80, 24),
-                Font = new Font("Segoe UI", 10),
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30, 30, 30)
+                Font = ThemeFonts.Normal,
+                ForeColor = ThemeColors.TextPrimary,
+                BackColor = ThemeColors.DarkBackground
             };
             this.Controls.Add(_lblLanguage);
 
@@ -232,10 +231,10 @@ namespace KeyboardLayoutWatcher
             {
                 Location = new Point(100, yPos),
                 Size = new Size(150, 24),
-                Font = new Font("Segoe UI", 10),
+                Font = ThemeFonts.Normal,
                 DropDownStyle = ComboBoxStyle.DropDownList,
-                BackColor = Color.FromArgb(50, 50, 50),
-                ForeColor = Color.White,
+                BackColor = ThemeColors.MenuBackground,
+                ForeColor = ThemeColors.TextPrimary,
                 FlatStyle = FlatStyle.Flat
             };
             // NOTE: Event handler attached in LoadSettings() AFTER initial selection is set
@@ -255,11 +254,11 @@ namespace KeyboardLayoutWatcher
                 Text = _localization.Lang("links.more_tools"),
                 Location = new Point(15, yPos),
                 Size = new Size(370, 24),
-                Font = new Font("Segoe UI", 9, FontStyle.Underline),
-                LinkColor = Color.White,
-                ActiveLinkColor = Color.LightGray,
-                VisitedLinkColor = Color.White,
-                BackColor = Color.FromArgb(30, 30, 30),
+                Font = ThemeFonts.SmallUnderlined,
+                LinkColor = ThemeColors.TextPrimary,
+                ActiveLinkColor = ThemeColors.LinkActive,
+                VisitedLinkColor = ThemeColors.TextPrimary,
+                BackColor = ThemeColors.DarkBackground,
                 LinkBehavior = LinkBehavior.AlwaysUnderline
             };
             _lnkMoreTools.LinkClicked += (s, args) => System.Diagnostics.Process.Start(Constants.MoreToolsUrl);
@@ -289,9 +288,9 @@ namespace KeyboardLayoutWatcher
                 Text = text,
                 Location = new Point(15, yPos),
                 Size = new Size(360, 24),
-                Font = new Font("Segoe UI", 10),
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30, 30, 30),
+                Font = ThemeFonts.Normal,
+                ForeColor = ThemeColors.TextPrimary,
+                BackColor = ThemeColors.DarkBackground,
                 FlatStyle = FlatStyle.Flat
             };
             checkBox.CheckedChanged += CheckBox_CheckedChanged;
@@ -315,6 +314,7 @@ namespace KeyboardLayoutWatcher
             };
             _trayManager.ExitRequested += (s, e) => Application.Exit();
             UpdateTrayIconForTheme();
+            UpdateWindowIconForTheme();
 
             // Timer for layout polling
             _timer = new Timer { Interval = 200 };
@@ -340,7 +340,6 @@ namespace KeyboardLayoutWatcher
             _rbAllowMultiPress.Checked = !settings.WinSpaceBlockCompletely;
             _nudPressCount.Value = Math.Max(2, Math.Min(5, settings.WinSpacePressCount));
             _nudPressCount.Enabled = !settings.WinSpaceBlockCompletely;
-            _lblTimes.Enabled = !settings.WinSpaceBlockCompletely;
 
             _chkShowAlert.Checked = settings.ShowAlertOnLayoutChange;
             _chkMinimizeOnStart.Checked = settings.MinimizeOnStart;
@@ -443,7 +442,6 @@ namespace KeyboardLayoutWatcher
 
             // Enable/disable NumericUpDown based on selection
             _nudPressCount.Enabled = _rbAllowMultiPress.Checked;
-            _lblTimes.Enabled = _rbAllowMultiPress.Checked;
         }
 
         private void NudPressCount_ValueChanged(object sender, EventArgs e)
@@ -481,6 +479,13 @@ namespace KeyboardLayoutWatcher
             // Dark theme = dark taskbar background (use light icon)
             Icon iconToUse = isLightTheme ? Properties.Resources.icon_dark : Properties.Resources.icon_light;
             _trayManager?.UpdateIcon(iconToUse);
+        }
+
+        private void UpdateWindowIconForTheme()
+        {
+            bool isLightTheme = IsWindowsUsingLightTheme();
+            // Light theme = use dark icon, Dark theme = use light icon
+            this.Icon = isLightTheme ? Properties.Resources.icon_dark : Properties.Resources.icon_light;
         }
 
         private void CmbLanguage_SelectedIndexChanged(object sender, EventArgs e)
@@ -624,7 +629,7 @@ namespace KeyboardLayoutWatcher
                 MinimizeBox = false,
                 TopMost = true,
                 ShowInTaskbar = false,
-                BackColor = Color.FromArgb(30, 30, 30)
+                BackColor = ThemeColors.DarkBackground
             };
 
             var alertMessage = _localization.Lang("alert.message", new Dictionary<string, string>
@@ -637,9 +642,9 @@ namespace KeyboardLayoutWatcher
                 Text = alertMessage,
                 Dock = DockStyle.Fill,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Segoe UI", 12),
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(30, 30, 30)
+                Font = ThemeFonts.Heading,
+                ForeColor = ThemeColors.TextPrimary,
+                BackColor = ThemeColors.DarkBackground
             };
             _currentAlert.Controls.Add(label);
 
@@ -649,10 +654,10 @@ namespace KeyboardLayoutWatcher
                 Size = new Size(75, 30),
                 Location = new Point(112, 80),
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(60, 60, 60),
-                ForeColor = Color.White
+                BackColor = ThemeColors.Separator,
+                ForeColor = ThemeColors.TextPrimary
             };
-            okButton.FlatAppearance.BorderColor = Color.FromArgb(100, 100, 100);
+            okButton.FlatAppearance.BorderColor = ThemeColors.Border;
             okButton.Click += (s, e) => _currentAlert.Close();
             _currentAlert.Controls.Add(okButton);
             _currentAlert.AcceptButton = okButton;
@@ -679,6 +684,7 @@ namespace KeyboardLayoutWatcher
             {
                 // Theme may have changed
                 UpdateTrayIconForTheme();
+                UpdateWindowIconForTheme();
             }
 
             base.WndProc(ref m);

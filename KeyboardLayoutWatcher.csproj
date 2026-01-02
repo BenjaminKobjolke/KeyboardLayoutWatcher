@@ -64,6 +64,8 @@
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TrayManager.cs" />
+    <Compile Include="ThemeColors.cs" />
+    <Compile Include="ThemeFonts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

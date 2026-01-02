@@ -29,8 +29,8 @@ namespace KeyboardLayoutWatcher
         private void CreateContextMenu()
         {
             _contextMenu = new ContextMenuStrip();
-            _contextMenu.BackColor = Color.FromArgb(45, 45, 45);
-            _contextMenu.ForeColor = Color.White;
+            _contextMenu.BackColor = ThemeColors.DarkerBackground;
+            _contextMenu.ForeColor = ThemeColors.TextPrimary;
             _contextMenu.Renderer = new DarkMenuRenderer();
 
             var showItem = new ToolStripMenuItem(_localization.Lang("tray.show"));
@@ -133,23 +133,23 @@ namespace KeyboardLayoutWatcher
 
         protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         {
-            e.TextColor = Color.White;
+            e.TextColor = ThemeColors.TextPrimary;
             base.OnRenderItemText(e);
         }
     }
 
     internal class DarkColorTable : ProfessionalColorTable
     {
-        public override Color MenuItemSelected => Color.FromArgb(60, 60, 60);
-        public override Color MenuItemSelectedGradientBegin => Color.FromArgb(60, 60, 60);
-        public override Color MenuItemSelectedGradientEnd => Color.FromArgb(60, 60, 60);
-        public override Color MenuBorder => Color.FromArgb(80, 80, 80);
-        public override Color MenuItemBorder => Color.FromArgb(80, 80, 80);
-        public override Color ToolStripDropDownBackground => Color.FromArgb(45, 45, 45);
-        public override Color ImageMarginGradientBegin => Color.FromArgb(45, 45, 45);
-        public override Color ImageMarginGradientMiddle => Color.FromArgb(45, 45, 45);
-        public override Color ImageMarginGradientEnd => Color.FromArgb(45, 45, 45);
-        public override Color SeparatorDark => Color.FromArgb(80, 80, 80);
-        public override Color SeparatorLight => Color.FromArgb(80, 80, 80);
+        public override Color MenuItemSelected => ThemeColors.MenuHover;
+        public override Color MenuItemSelectedGradientBegin => ThemeColors.MenuHover;
+        public override Color MenuItemSelectedGradientEnd => ThemeColors.MenuHover;
+        public override Color MenuBorder => ThemeColors.MenuBorder;
+        public override Color MenuItemBorder => ThemeColors.MenuBorder;
+        public override Color ToolStripDropDownBackground => ThemeColors.DarkerBackground;
+        public override Color ImageMarginGradientBegin => ThemeColors.DarkerBackground;
+        public override Color ImageMarginGradientMiddle => ThemeColors.DarkerBackground;
+        public override Color ImageMarginGradientEnd => ThemeColors.DarkerBackground;
+        public override Color SeparatorDark => ThemeColors.MenuBorder;
+        public override Color SeparatorLight => ThemeColors.MenuBorder;
     }
 }
