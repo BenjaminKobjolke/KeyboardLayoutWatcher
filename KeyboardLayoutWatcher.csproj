@@ -62,6 +62,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="KeyboardHook.cs" />
+    <Compile Include="KeyboardLayoutInfo.cs" />
+    <Compile Include="LayoutAlertDialog.cs" />
+    <Compile Include="MainFormUI.cs" />
+    <Compile Include="ThemeHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="TrayManager.cs" />
     <Compile Include="ThemeColors.cs" />
