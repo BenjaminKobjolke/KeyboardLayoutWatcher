@@ -1,5 +1,7 @@
 # Keyboard Layout Watcher
 
+**Homepage & Download:** [https://workflow-tools.com/keyboard-layout-watcher](https://workflow-tools.com/keyboard-layout-watcher)
+
 A Windows application that monitors and displays the current keyboard layout. Shows an alert when the keyboard layout changes.
 
 ## Screenshots
