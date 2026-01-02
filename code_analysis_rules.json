@@ -1,0 +1,41 @@
+{
+  "log_level": "all",
+  "max_lines_per_file": {
+    "enabled": true,
+    "warning": 300,
+    "error": 500,
+    "exclude_patterns": ["bin/**", "obj/**", ".vs/**", "packages/**"]
+  },
+  "pmd_duplicates": {
+    "enabled": true,
+    "minimum_tokens": 100,
+    "exclude_patterns": {
+      "cs": ["**/bin/**", "**/obj/**", "**/.vs/**", "**/packages/**"]
+    }
+  },
+  "dotnet_analyze": {
+    "enabled": true,
+    "configuration": "Debug",
+    "solution_path": "KeyboardLayoutWatcher.sln",
+    "ignore_codes": [],
+    "exclude_patterns": ["bin/**", "obj/**", ".vs/**", "packages/**"]
+  },
+  "dart_analyze": {
+    "enabled": false
+  },
+  "dart_code_linter": {
+    "enabled": false
+  },
+  "flutter_analyze": {
+    "enabled": false
+  },
+  "ruff_analyze": {
+    "enabled": false
+  },
+  "phpstan_analyze": {
+    "enabled": false
+  },
+  "php_cs_fixer": {
+    "enabled": false
+  }
+}
